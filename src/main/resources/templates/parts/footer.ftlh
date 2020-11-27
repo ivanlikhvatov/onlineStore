@@ -43,16 +43,16 @@
                 <h6 class="text-uppercase font-weight-bold">Товары</h6>
                 <hr class="accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #4285F4">
                 <p>
-                    <a class="dark-grey-text" href="/product/${"telephone"}/list">Телефоны</a>
+                    <a class="dark-grey-text" href="/product/${"TELEPHONE"}/list">Телефоны</a>
                 </p>
                 <p>
-                    <a class="dark-grey-text" href="/product/${"tv"}/list">Телевизоры</a>
+                    <a class="dark-grey-text" href="/product/${"TV"}/list">Телевизоры</a>
                 </p>
                 <p>
-                    <a class="dark-grey-text" href="/product/${"notebook"}/list">Ноутбуки</a>
+                    <a class="dark-grey-text" href="/product/${"NOTEBOOK"}/list">Ноутбуки</a>
                 </p>
                 <p>
-                    <a class="dark-grey-text" href="/product/${"computer"}/list">Компьютеры</a>
+                    <a class="dark-grey-text" href="/product/${"COMPUTER"}/list">Компьютеры</a>
                 </p>
                 <p>
                     <a class="dark-grey-text" href="/product/${"all"}/list">Все товары</a>

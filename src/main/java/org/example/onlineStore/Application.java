@@ -1,5 +1,6 @@
 package org.example.onlineStore;
 
+import org.example.onlineStore.domain.TypeProduct;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -9,3 +10,13 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 }
+
+//public class Application {
+//    public static void main(String[] args) {
+//        String string = "TELEPHONE";
+//
+//        TypeProduct en = TypeProduct.valueOf(string);
+//
+//        System.out.println(en.name());
+//    }
+//}

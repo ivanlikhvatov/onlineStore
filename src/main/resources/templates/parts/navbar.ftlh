@@ -101,18 +101,18 @@
     <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2 nav justify-content-center">
         <ul class="navbar-nav nav nav-pills nav-fill" id="uli">
             <li class="nav-item">
-                <a class="nav-link" style="font-size: large;margin-left: 10px;" href="/product/${"telephone"}/list">Телефоны</a>
+                <a class="nav-link" style="font-size: large;margin-left: 10px;" href="/product/${"TELEPHONE"}/list">Телефоны</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" style="font-size: large; margin-left: 10px;" href="/product/${"computer"}/list">Компьютеры</a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" style="font-size: large; margin-left: 10px;" href="/product/${"notebook"}/list">Ноутбуки</a>
+                <a class="nav-link" style="font-size: large; margin-left: 10px;" href="/product/${"COMPUTER"}/list">Компьютеры</a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" style="font-size: large; margin-left: 10px;" href="/product/${"tv"}/list">Телевизоры</a>
+                <a class="nav-link" style="font-size: large; margin-left: 10px;" href="/product/${"NOTEBOOK"}/list">Ноутбуки</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" style="font-size: large; margin-left: 10px;" href="/product/${"TV"}/list">Телевизоры</a>
             </li>
         </ul>
     </div>
