@@ -3,6 +3,7 @@ package org.example.onlineStore.controller;
 import org.example.onlineStore.domain.*;
 import org.example.onlineStore.insideClasses.MyFile;
 import org.example.onlineStore.repos.AttributeRepo;
+import org.example.onlineStore.service.BasketService;
 import org.example.onlineStore.service.ProductService;
 import org.example.onlineStore.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,9 @@ public class ProductController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private BasketService basketService;
 
     @Autowired
     private AttributeRepo attributeRepo;
@@ -139,6 +143,7 @@ public class ProductController {
         }
 
         model.addAttribute("product", product);
+        model.addAttribute("basketRepo", basketService);
         model.addAttribute("productService", productService);
         model.addAttribute("userFromBd", userFromBd);
 
@@ -152,7 +157,7 @@ public class ProductController {
     @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/add/{type}")
     public String product(Model model, @PathVariable String type){
-
+        model.addAttribute("basketRepo", basketService);
         model.addAttribute("type", type);
         return "productAdd";
     }
@@ -165,6 +170,7 @@ public class ProductController {
                              @RequestParam("file") List<MultipartFile> files,
                              Model model
                              ) throws IOException {
+        model.addAttribute("basketRepo", basketService);
         product.setId(UUID.randomUUID().toString());
         product.setFilesNames(myFile.loadFilesAndGetFileNames(files));
         product.setType(TypeProduct.valueOf(type));
@@ -181,9 +187,6 @@ public class ProductController {
 
     @GetMapping("/{type}/list")
     public String productList(@RequestParam(required = false, defaultValue = "") String filter, Model model, @AuthenticationPrincipal User user, @PathVariable String type){
-
-        System.out.println(type);
-
         User userFromBd = null;
 
         if (user != null){
@@ -200,7 +203,7 @@ public class ProductController {
 
         model.addAttribute("type", type);
         model.addAttribute("productService", productService);
-
+        model.addAttribute("basketRepo", basketService);
         model.addAttribute("userFromBd", userFromBd);
         model.addAttribute("filter", filter);
 
@@ -305,7 +308,7 @@ public class ProductController {
     @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("{product}")
     public String productEditForm(@PathVariable Product product, Model model){
-
+        model.addAttribute("basketRepo", basketService);
         model.addAttribute("product", product);
         model.addAttribute("productService", productService);
 
@@ -341,6 +344,11 @@ public class ProductController {
     @ResponseBody
     public String productDelete(@RequestParam ("productId") Product product){
 
+        List<Basket> baskets = basketService.findAllByProductId(product.getId());
+
+        if (!baskets.isEmpty()){
+            basketService.deleteAll(baskets);
+        }
 
         userService.deleteUsersFavoriteProduct(product.getId());
 

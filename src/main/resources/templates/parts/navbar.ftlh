@@ -123,6 +123,47 @@
                 <div class="btn" style="width: 150px; background-color: #7b1fa2">
                     <a href="/basket" style="color: white; text-decoration: none">
 
+                        <#if user?? && user.isEnabled()>
+                            <span>
+                                <svg class="bi bi-cart" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                          d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+                                </svg>
+                            </span>
+
+                            <span style="position: relative; bottom: 3px">
+                                <#if basketRepo.findAllByUser(user)??>
+                                    <#assign count = 0>
+                                    <#list basketRepo.findAllByUser(user) as product>
+                                        <#assign count = count + product.count>
+                                    </#list>
+                                    <span style="position: relative; bottom: 1px">
+                                        <span>#{count}</span>
+                                        <#if count % 10 = 1 && count % 100 != 11>
+                                            товар
+                                        <#elseif (count % 10 = 2 || count % 10 = 3 || count % 10 = 4) && (count % 100 != 12 && count % 100 != 13 && count % 100 != 14)>
+                                            товара
+                                        <#else>
+                                            товаров
+                                        </#if>
+                                    </span>
+                                </#if>
+                            </span>
+                        <#else>
+                            <span>
+                                    <svg class="bi bi-cart" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                              d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+                                    </svg>
+                                </span>
+
+                            <span style="position: relative; bottom: 3px">
+                                    <span>0</span> товаров
+                                </span>
+                        </#if>
+
                     </a>
                 </div>
             </li>
@@ -134,12 +175,6 @@
     #uli {
         width: 40%;
     }
-
-    /*.bg-company-red {*/
-    /*    background-color: cornflowerblue !important;*/
-    /*    height: 70px;*/
-    /*}*/
-
 
     .dropdown-toggle::after {
         margin-bottom: 6px;

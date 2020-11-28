@@ -1,6 +1,7 @@
 package org.example.onlineStore.controller;
 
 import org.example.onlineStore.domain.User;
+import org.example.onlineStore.repos.BasketRepo;
 import org.example.onlineStore.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,13 +19,18 @@ public class RegistrationController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    BasketRepo basketRepo;
+
     @GetMapping("/registration")
     public String registration(Model model){
+        model.addAttribute("basketRepo", basketRepo);
         return "registration";
     }
 
     @PostMapping("/registration")
     public String addUser(User user, Map<String, Object> model) {
+        model.put("basketRepo", basketRepo);
 
         if ((user.getEmail().length() > 255) || (StringUtils.isEmpty(user.getEmail()))
                 || (user.getPassword().length() > 255) || (StringUtils.isEmpty(user.getPassword()))
@@ -50,6 +56,7 @@ public class RegistrationController {
 
     @GetMapping("loginError")
     public String loginError(Model model){
+        model.addAttribute("basketRepo", basketRepo);
         model.addAttribute("message", "Неверный E-mail или пароль, попробуйте ещё раз");
         return "login";
     }
@@ -57,6 +64,7 @@ public class RegistrationController {
     @GetMapping("/activate/{code}")
     public String activate(Model model, @PathVariable String code){
         boolean isActivate = userService.activateUser(code);
+        model.addAttribute("basketRepo", basketRepo);
 
         if (isActivate){
             model.addAttribute("message", "Вы успешно зарегистрировались");

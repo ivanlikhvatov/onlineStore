@@ -6,6 +6,10 @@ import org.hibernate.annotations.Type;
 import javax.persistence.*;
 import java.util.List;
 
+
+
+
+//TODO проверить чтоб цена везде была в double и еще раз свериться с планом из заметок
 @Entity
 @Table(name = "product")
 public class Product implements LoadableFiles {
@@ -16,7 +20,7 @@ public class Product implements LoadableFiles {
     private TypeProduct type;
 
     private String name;
-    private int price;
+    private double price;
     private String brand;
     private String country;
     private String color;
@@ -64,11 +68,11 @@ public class Product implements LoadableFiles {
         this.name = name;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

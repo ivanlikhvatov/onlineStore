@@ -63,16 +63,6 @@
             });
         </script>
 
-
-        <#--        <style>-->
-        <#--            .hm-gradient {-->
-        <#--                background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);-->
-        <#--            }-->
-        <#--            .darken-grey-text {-->
-        <#--                color: #2E2E2E;-->
-        <#--            }-->
-        <#--        </style>-->
-
         <script>
             $('.addOneToBasket').on('click', function () {
                 let product = $(this).attr("value");

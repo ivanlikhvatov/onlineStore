@@ -1,9 +1,6 @@
 package org.example.onlineStore.service;
 
-import org.example.onlineStore.domain.Attribute;
-import org.example.onlineStore.domain.Product;
-import org.example.onlineStore.domain.StateProduct;
-import org.example.onlineStore.domain.TypeProduct;
+import org.example.onlineStore.domain.*;
 import org.example.onlineStore.repos.AttributeRepo;
 import org.example.onlineStore.repos.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +16,9 @@ public class ProductService {
 
     @Autowired
     AttributeRepo attributeRepo;
+
+    @Autowired
+    BasketService basketService;
 
     public boolean addProduct(Product product, Map<String, String> allAttributes){
 
@@ -277,6 +277,17 @@ public class ProductService {
                 Attribute oldAttribute = attributeRepo.findByNameAndProduct("countOfHdmiPorts", oldProduct);
                 oldAttribute.setValue(newAttributes.get("countOfHdmiPorts"));
                 attributeRepo.save(oldAttribute);
+            }
+        }
+
+        for (Basket basket : basketService.findAllByProductId(oldProduct.getId())) {
+            if (oldProduct.getCount() < basket.getCount()){
+                basketService.delete(basket);
+            }
+
+            if (basket.getPrice() != oldProduct.getPrice()){
+                basket.setPrice(oldProduct.getPrice());
+                basketService.save(basket);
             }
         }
 
