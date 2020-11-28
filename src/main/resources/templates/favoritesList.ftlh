@@ -101,7 +101,6 @@
                         </#if>
                     </div>
 
-
                     <div class="card-body">
                         <#if product.type.name() = "TELEPHONE">
                             <p class="card-text">
@@ -246,7 +245,6 @@
                                         </a>
                                     </#if>
                                 </#if>
-
                             <#else>
                                 <a id="iconsOnCard" href="/login">
                                     <svg class="bi bi-heart" width="1.7em" height="1.7em" viewBox="0 0 16 16"
@@ -360,7 +358,4 @@
             text-decoration: underline;
         }
     </style>
-
-
-
 </@c.page>

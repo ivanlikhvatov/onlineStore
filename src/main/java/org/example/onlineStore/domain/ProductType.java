@@ -1,5 +1,5 @@
 package org.example.onlineStore.domain;
 
-public enum TypeProduct {
+public enum ProductType {
     TELEPHONE, TV, NOTEBOOK, COMPUTER
 }

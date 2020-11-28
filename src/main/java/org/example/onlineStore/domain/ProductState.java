@@ -1,5 +1,5 @@
 package org.example.onlineStore.domain;
 
-public enum StateProduct {
+public enum ProductState {
     ACTIVE, DELETED
 }

@@ -11,7 +11,7 @@ public class Basket {
 
     private String productId;
     @Enumerated(EnumType.STRING)
-    private TypeProduct productType;
+    private ProductType productType;
     private Long count;
     private double price;
 
@@ -36,11 +36,11 @@ public class Basket {
         this.productId = productId;
     }
 
-    public TypeProduct getProductType() {
+    public ProductType getProductType() {
         return productType;
     }
 
-    public void setProductType(TypeProduct productType) {
+    public void setProductType(ProductType productType) {
         this.productType = productType;
     }
 

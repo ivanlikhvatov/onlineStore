@@ -145,11 +145,7 @@
                                             </#if>
                                         </a>
                                     </div>
-
                                 </div>
-
-
-
                             </div>
                         </div>
                     </div>
@@ -210,19 +206,10 @@
         </div>
     </div>
 
-
-
     <br>
     <br>
-
-
-<#--    ${basketRepo.findByUserAndProductId(user, "tel.id")}-->
-<#--    <span>${basketRepo.findAllByUser(user).toString()}</span>-->
-
-
     <br>
     <br>
-
 
     <style>
         #carousel-image {
@@ -241,7 +228,6 @@
 
         .topCardText {
             font-size: small;
-            /*margin-top: 10px;*/
             display: flex;
             margin-bottom: 10px;
         }
@@ -251,7 +237,6 @@
         }
 
         .greenCircle {
-            /*margin-left: 7px;*/
             margin-top: 2px;
             width: 10px;
             height: 10px;
@@ -262,7 +247,6 @@
         }
 
         .redCircle {
-            /*margin-left: 7px;*/
             margin-top: 2px;
             width: 10px;
             height: 10px;
@@ -336,11 +320,7 @@
               color:#999999;
               background:#e3e3e3;
               -webkit-box-shadow:inset 0,0,0px 0,0,0px 1,1,1px #ffffff,#ffffff,#ffffff;  -moz-box-shadow:inset 0px 0px 1px #ffffff;  box-shadow:inset 0px 0px 1px #ffffff;
-
           }
-
-
-
 
         .buttonPlus{text-decoration:none; text-align:center;
             cursor: pointer;
@@ -437,11 +417,6 @@
 
         }
     </style>
-
-
-
-
-
 </@c.page>
 
 

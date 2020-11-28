@@ -25,7 +25,7 @@ public class ProductService {
         List<Attribute> attributes = new ArrayList<>();
 
 
-        if (product.getType().equals(TypeProduct.TELEPHONE)){
+        if (product.getType().equals(ProductType.TELEPHONE)){
             Attribute screenResolution = new Attribute(UUID.randomUUID().toString(), product, "screenResolution", allAttributes.get("screenResolution"));
             Attribute screenDiagonal = new Attribute(UUID.randomUUID().toString(), product, "screenDiagonal", allAttributes.get("screenDiagonal"));
             Attribute platform = new Attribute(UUID.randomUUID().toString(), product, "platform", allAttributes.get("platform"));
@@ -36,7 +36,7 @@ public class ProductService {
             attributes.addAll(Arrays.asList(screenResolution, screenDiagonal, platform, mainCamera, frontCamera, internalMemory));
         }
 
-        if (product.getType().equals(TypeProduct.COMPUTER) || product.getType().equals(TypeProduct.NOTEBOOK)){
+        if (product.getType().equals(ProductType.COMPUTER) || product.getType().equals(ProductType.NOTEBOOK)){
             Attribute screenResolution = new Attribute(UUID.randomUUID().toString(), product, "screenResolution", allAttributes.get("screenResolution"));
             Attribute screenDiagonal = new Attribute(UUID.randomUUID().toString(), product, "screenDiagonal", allAttributes.get("screenDiagonal"));
             Attribute internalMemory = new Attribute(UUID.randomUUID().toString(), product, "internalMemory", allAttributes.get("internalMemory"));
@@ -50,7 +50,7 @@ public class ProductService {
             attributes.addAll(Arrays.asList(screenResolution, screenDiagonal, internalMemory, ram, cpu, cpuFrequency, countOfCores, graphicsProcessor, yearRelease));
         }
 
-        if (product.getType().equals(TypeProduct.TV)){
+        if (product.getType().equals(ProductType.TV)){
             Attribute screenResolution = new Attribute(UUID.randomUUID().toString(), product, "screenResolution", allAttributes.get("screenResolution"));
             Attribute screenDiagonal = new Attribute(UUID.randomUUID().toString(), product, "screenDiagonal", allAttributes.get("screenDiagonal"));
             Attribute yearRelease = new Attribute(UUID.randomUUID().toString(), product, "yearRelease", allAttributes.get("yearRelease"));
@@ -116,7 +116,7 @@ public class ProductService {
         }
 
 
-        if (oldProduct.getType().equals(TypeProduct.TELEPHONE)){
+        if (oldProduct.getType().equals(ProductType.TELEPHONE)){
 
             if (!StringUtils.isEmpty(newAttributes.get("screenResolution"))){
                 Attribute oldAttribute = attributeRepo.findByNameAndProduct("screenResolution", oldProduct);
@@ -155,7 +155,7 @@ public class ProductService {
             }
         }
 
-        if (oldProduct.getType().equals(TypeProduct.COMPUTER) || oldProduct.getType().equals(TypeProduct.NOTEBOOK)){
+        if (oldProduct.getType().equals(ProductType.COMPUTER) || oldProduct.getType().equals(ProductType.NOTEBOOK)){
             if (!StringUtils.isEmpty(newAttributes.get("screenResolution"))){
                 Attribute oldAttribute = attributeRepo.findByNameAndProduct("screenResolution", oldProduct);
                 oldAttribute.setValue(newAttributes.get("screenResolution"));
@@ -212,7 +212,7 @@ public class ProductService {
 
         }
 
-        if (oldProduct.getType().equals(TypeProduct.TV)){
+        if (oldProduct.getType().equals(ProductType.TV)){
             if (!StringUtils.isEmpty(newAttributes.get("screenResolution"))){
                 Attribute oldAttribute = attributeRepo.findByNameAndProduct("screenResolution", oldProduct);
                 oldAttribute.setValue(newAttributes.get("screenResolution"));
@@ -302,11 +302,11 @@ public class ProductService {
         return productRepo.findById(productId);
     }
 
-    public List<Product> findAllByType(TypeProduct type) {
+    public List<Product> findAllByType(ProductType type) {
         return productRepo.findAllByType(type);
     }
 
-    public List<Product> findAllByNameContainingAndType(String filter, TypeProduct type) {
+    public List<Product> findAllByNameContainingAndType(String filter, ProductType type) {
         return productRepo.findAllByNameContainingAndType(filter, type);
     }
 
@@ -332,11 +332,11 @@ public class ProductService {
         productRepo.save(product);
     }
 
-    public List<Product> findAllByTypeAndName(TypeProduct type, String name) {
+    public List<Product> findAllByTypeAndName(ProductType type, String name) {
         return productRepo.findAllByTypeAndName(type, name);
     }
 
-    public List<Product> findAllByState(StateProduct state) {
+    public List<Product> findAllByState(ProductState state) {
         return productRepo.findAllByState(state);
     }
 
@@ -348,7 +348,7 @@ public class ProductService {
         return productRepo.findAllByNameAndColor(name, color);
     }
 
-    public  List<Product> findAllByNameAndBrandAndCountryAndType(String name, String brand, String country, TypeProduct type) {
+    public  List<Product> findAllByNameAndBrandAndCountryAndType(String name, String brand, String country, ProductType type) {
         return productRepo.findAllByNameAndBrandAndCountryAndType(name, brand, country, type);
     }
 
@@ -356,7 +356,7 @@ public class ProductService {
 
         for (Product product : productRepo.findAllByNameAndColor(name, color)) {
             if (attributeRepo.findByProductAndNameAndValue(product, "internalMemory", internalMemory) != null){
-                if (!product.getType().equals(TypeProduct.TELEPHONE)){
+                if (!product.getType().equals(ProductType.TELEPHONE)){
                     continue;
                 }
                 return product;
@@ -366,7 +366,7 @@ public class ProductService {
         return productRepo.findAllByNameAndColor(name, color).get(0);
     }
 
-    public List<Product> findAllByNameAndType(String name, TypeProduct type) {
+    public List<Product> findAllByNameAndType(String name, ProductType type) {
         return productRepo.findAllByNameAndType(name, type);
     }
 }

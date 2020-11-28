@@ -1,6 +1,5 @@
 package org.example.onlineStore;
 
-import org.example.onlineStore.domain.TypeProduct;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

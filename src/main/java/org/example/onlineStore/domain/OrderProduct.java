@@ -1,19 +1,11 @@
 package org.example.onlineStore.domain;
 
-import org.example.onlineStore.insideClasses.LoadableFiles;
-import org.hibernate.annotations.Type;
+import javax.persistence.Embeddable;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
-import javax.persistence.*;
-import java.util.List;
-
-
-
-
-//TODO проверить чтоб цена везде была в double и еще раз свериться с планом из заметок
-@Entity
-@Table(name = "product")
-public class Product implements LoadableFiles {
-    @Id
+@Embeddable
+public class OrderProduct {
     private String id;
     private Long count;
     @Enumerated(EnumType.STRING)
@@ -24,17 +16,8 @@ public class Product implements LoadableFiles {
     private String brand;
     private String country;
     private String color;
-    @Enumerated(EnumType.STRING)
-    private ProductState state;
 
-    @Type(type = "text")
     private String description;
-
-    @ElementCollection
-    @CollectionTable (name = "pathsToProductImages", joinColumns = @JoinColumn (name = "product_id"))
-    @Column (name = "path")
-    private List<String> filesNames;
-
 
     public String getId() {
         return id;
@@ -108,35 +91,4 @@ public class Product implements LoadableFiles {
         this.description = description;
     }
 
-    public List<String> getFilesNames() {
-        return filesNames;
-    }
-
-    public void setFilesNames(List<String> filesNames) {
-        this.filesNames = filesNames;
-    }
-
-    public ProductState getState() {
-        return state;
-    }
-
-    public void setState(ProductState state) {
-        this.state = state;
-    }
-
-    @Override
-    public String toString() {
-        return "Product{" +
-                "id='" + id + '\'' +
-                ", count=" + count +
-                ", type='" + type + '\'' +
-                ", name='" + name + '\'' +
-                ", price=" + price +
-                ", brand='" + brand + '\'' +
-                ", country='" + country + '\'' +
-                ", color='" + color + '\'' +
-                ", description='" + description + '\'' +
-                ", filesNames=" + filesNames +
-                '}';
-    }
 }

@@ -47,11 +47,11 @@ public class ProductController {
         Map<String, Product> productVariationsByColor = new HashMap<>();
         Map<String, Product> productVariationsByMemory = new HashMap<>();
 
-        if (product.getType().equals(TypeProduct.TELEPHONE) && product.getState().equals(StateProduct.ACTIVE)){
+        if (product.getType().equals(ProductType.TELEPHONE) && product.getState().equals(ProductState.ACTIVE)){
 
             for (Product tempProduct : productService.findAllByNameAndType(product.getName(), product.getType())){
 
-                if (tempProduct.getState().equals(StateProduct.DELETED)){
+                if (tempProduct.getState().equals(ProductState.DELETED)){
                     continue;
                 }
 
@@ -71,7 +71,7 @@ public class ProductController {
 
             for (Product tempProduct : productService.findAllByNameAndType(product.getName(), product.getType())){
 
-                if (tempProduct.getState().equals(StateProduct.DELETED)){
+                if (tempProduct.getState().equals(ProductState.DELETED)){
                     continue;
                 }
 
@@ -90,7 +90,7 @@ public class ProductController {
 
         }
 
-        if (product.getType().equals(TypeProduct.NOTEBOOK) && product.getState().equals(StateProduct.ACTIVE)){
+        if (product.getType().equals(ProductType.NOTEBOOK) && product.getState().equals(ProductState.ACTIVE)){
 
             for (Product tempProduct : productService.findAllByNameAndBrandAndCountryAndType(product.getName(), product.getBrand(), product.getCountry(), product.getType())){
 
@@ -173,8 +173,8 @@ public class ProductController {
         model.addAttribute("basketRepo", basketService);
         product.setId(UUID.randomUUID().toString());
         product.setFilesNames(myFile.loadFilesAndGetFileNames(files));
-        product.setType(TypeProduct.valueOf(type));
-        product.setState(StateProduct.ACTIVE);
+        product.setType(ProductType.valueOf(type));
+        product.setState(ProductState.ACTIVE);
 
 
         if (!productService.addProduct(product, allAttributes)){
@@ -209,7 +209,7 @@ public class ProductController {
 
 
         if (type.equals("deleted")){
-            List<Product> products = productService.findAllByState(StateProduct.DELETED);
+            List<Product> products = productService.findAllByState(ProductState.DELETED);
 
             if (filter != null && !filter.isEmpty() && !products.isEmpty()){
                 products.retainAll(productService.findAllByName(filter));
@@ -233,10 +233,10 @@ public class ProductController {
         }
 
         if (type.equals("TELEPHONE")){
-            Iterable<Product> tels = productService.findAllByType(TypeProduct.TELEPHONE);
+            Iterable<Product> tels = productService.findAllByType(ProductType.TELEPHONE);
 
             if (filter != null && !filter.isEmpty()){
-                tels = productService.findAllByNameContainingAndType(filter, TypeProduct.TELEPHONE);
+                tels = productService.findAllByNameContainingAndType(filter, ProductType.TELEPHONE);
             }
 
             model.addAttribute("products", tels);
@@ -245,10 +245,10 @@ public class ProductController {
         }
 
         if (type.equals("COMPUTER")){
-            Iterable<Product> computers = productService.findAllByType(TypeProduct.COMPUTER);
+            Iterable<Product> computers = productService.findAllByType(ProductType.COMPUTER);
 
             if (filter != null && !filter.isEmpty()){
-                computers = productService.findAllByNameContainingAndType(filter, TypeProduct.COMPUTER);
+                computers = productService.findAllByNameContainingAndType(filter, ProductType.COMPUTER);
             }
 
             model.addAttribute("products", computers);
@@ -257,10 +257,10 @@ public class ProductController {
         }
 
         if (type.equals("NOTEBOOK")){
-            Iterable<Product> notebooks = productService.findAllByType(TypeProduct.NOTEBOOK);
+            Iterable<Product> notebooks = productService.findAllByType(ProductType.NOTEBOOK);
 
             if (filter != null && !filter.isEmpty()){
-                notebooks = productService.findAllByNameContainingAndType(filter, TypeProduct.NOTEBOOK);
+                notebooks = productService.findAllByNameContainingAndType(filter, ProductType.NOTEBOOK);
             }
 
             model.addAttribute("products", notebooks);
@@ -269,10 +269,10 @@ public class ProductController {
         }
 
         if (type.equals("TV")){
-            Iterable<Product> tv = productService.findAllByType(TypeProduct.TV);
+            Iterable<Product> tv = productService.findAllByType(ProductType.TV);
 
             if (filter != null && !filter.isEmpty()){
-                tv = productService.findAllByNameContainingAndType(filter, TypeProduct.TV);
+                tv = productService.findAllByNameContainingAndType(filter, ProductType.TV);
             }
 
             model.addAttribute("products", tv);
@@ -281,18 +281,18 @@ public class ProductController {
         }
 
         if (!StringUtils.isEmpty(type)){
-            List<Product> products = productService.findAllByTypeAndName(TypeProduct.TELEPHONE, type);
+            List<Product> products = productService.findAllByTypeAndName(ProductType.TELEPHONE, type);
 
             if (products.isEmpty()){
-                products = productService.findAllByTypeAndName(TypeProduct.COMPUTER, type);
+                products = productService.findAllByTypeAndName(ProductType.COMPUTER, type);
             }
 
             if (products.isEmpty()){
-                products = productService.findAllByTypeAndName(TypeProduct.TV, type);
+                products = productService.findAllByTypeAndName(ProductType.TV, type);
             }
 
             if (products.isEmpty()){
-                products = productService.findAllByTypeAndName(TypeProduct.NOTEBOOK, type);
+                products = productService.findAllByTypeAndName(ProductType.NOTEBOOK, type);
             }
 
             model.addAttribute("products", products);
@@ -352,7 +352,7 @@ public class ProductController {
 
         userService.deleteUsersFavoriteProduct(product.getId());
 
-        product.setState(StateProduct.DELETED);
+        product.setState(ProductState.DELETED);
         productService.save(product);
 
         return "product deleted";
@@ -365,7 +365,7 @@ public class ProductController {
     @ResponseBody
     public String productActivate(@RequestParam ("productId") Product product){
 
-        product.setState(StateProduct.ACTIVE);
+        product.setState(ProductState.ACTIVE);
         productService.save(product);
 
         return "product activated";

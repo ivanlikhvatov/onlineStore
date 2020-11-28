@@ -59,13 +59,13 @@
                     <#if user??>
                         <button class="dropdown-item" onclick="document.location='/user/profile'">Профиль</button>
                         <#if !isAdmin>
-                            <button class="dropdown-item" onclick="document.location='/order/list/active'">Мои заказы</button>
+                            <button class="dropdown-item" onclick="document.location='/order/list/ACTIVE'">Мои заказы</button>
                         </#if>
                     </#if>
 
                     <#if isAdmin>
                         <button class="dropdown-item" onclick="document.location='/user'">Список всех пользователей</button>
-                        <button class="dropdown-item" onclick="document.location='/order/list/active'">Список заказов</button>
+                        <button class="dropdown-item" onclick="document.location='/order/list/ACTIVE'">Список заказов</button>
                         <button class="dropdown-item" onclick="document.location='/product/deleted/list'">Список удаленных товаров</button>
                         <button class="dropdown-item" onclick="document.location='/listProductForAdd'">Добавить товар</button>
                         <button class="dropdown-item" onclick="document.location='/slider/add'">Добавить слайдер</button>
