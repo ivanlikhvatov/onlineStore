@@ -6,7 +6,6 @@ import org.example.onlineStore.repos.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
-
 import java.util.*;
 
 @Service
@@ -21,9 +20,7 @@ public class ProductService {
     BasketService basketService;
 
     public boolean addProduct(Product product, Map<String, String> allAttributes){
-
         List<Attribute> attributes = new ArrayList<>();
-
 
         if (product.getType().equals(ProductType.TELEPHONE)){
             Attribute screenResolution = new Attribute(UUID.randomUUID().toString(), product, "screenResolution", allAttributes.get("screenResolution"));
@@ -85,8 +82,6 @@ public class ProductService {
                               Product newProduct,
                               Product oldProduct
     ) {
-
-
         if (!StringUtils.isEmpty(newProduct.getBrand())){
             oldProduct.setBrand(newProduct.getBrand());
         }
@@ -115,9 +110,7 @@ public class ProductService {
             oldProduct.setDescription(newProduct.getDescription());
         }
 
-
         if (oldProduct.getType().equals(ProductType.TELEPHONE)){
-
             if (!StringUtils.isEmpty(newAttributes.get("screenResolution"))){
                 Attribute oldAttribute = attributeRepo.findByNameAndProduct("screenResolution", oldProduct);
                 oldAttribute.setValue(newAttributes.get("screenResolution"));
@@ -209,7 +202,6 @@ public class ProductService {
                 oldAttribute.setValue(newAttributes.get("yearRelease"));
                 attributeRepo.save(oldAttribute);
             }
-
         }
 
         if (oldProduct.getType().equals(ProductType.TV)){
@@ -291,7 +283,6 @@ public class ProductService {
             }
         }
 
-
         productRepo.save(oldProduct);
     }
 
@@ -353,7 +344,6 @@ public class ProductService {
     }
 
     public Product findPhoneByNameAndColorAndInternalMemory(String name, String color, String internalMemory){
-
         for (Product product : productRepo.findAllByNameAndColor(name, color)) {
             if (attributeRepo.findByProductAndNameAndValue(product, "internalMemory", internalMemory) != null){
                 if (!product.getType().equals(ProductType.TELEPHONE)){

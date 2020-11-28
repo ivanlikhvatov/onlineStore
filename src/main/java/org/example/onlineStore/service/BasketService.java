@@ -6,7 +6,6 @@ import org.example.onlineStore.domain.User;
 import org.example.onlineStore.repos.BasketRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;

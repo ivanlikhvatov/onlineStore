@@ -1,7 +1,6 @@
 <#import "parts/common.ftlh" as c>
 
 <@c.page>
-
     <#if type = "TELEPHONE">
         <p style="font-size: xx-large; font-weight: bold; color: #007bff">Добавление нового телефона</p>
     </#if>
@@ -20,10 +19,7 @@
 
     <br>
 
-
-
     <form action="/product/add" method="post" enctype="multipart/form-data">
-
         <input type="hidden" value="${type}" name="type">
 
         <div class="form-group row">
@@ -90,7 +86,6 @@
                 <input type="text" name="country" class="form-control" placeholder="Страна" required maxlength="100"/>
             </div>
         </div>
-
 
         <#if type = "TELEPHONE">
             <div class="form-group row">
@@ -171,10 +166,10 @@
             </div>
         </#if>
 
-
         <#if type = "COMPUTER">
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Разрешение экрана:</label>
+
                 <div class="col-sm-6">
                     <input type="text" name="screenResolution" class="form-control" placeholder="Разрешение экрана" required maxlength="100"/>
                 </div>
@@ -182,6 +177,7 @@
 
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Диагональ экрана:</label>
+
                 <div class="col-sm-6">
                     <input type="text" name="screenDiagonal" class="form-control" placeholder="Диагональ экрана" required maxlength="100"/>
                 </div>
@@ -189,6 +185,7 @@
 
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Встроенная память:</label>
+
                 <div class="col-sm-6">
                     <select name="internalMemory" class="form-control" required>
                         <option value="1 gb">1 gb</option>
@@ -230,6 +227,7 @@
 
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Оперативная память:</label>
+
                 <div class="col-sm-6">
                     <input type="text" name="ram" class="form-control" placeholder="Оперативная память" required maxlength="100"/>
                 </div>
@@ -237,6 +235,7 @@
 
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Процессор:</label>
+
                 <div class="col-sm-6">
                     <input type="text" name="cpu" class="form-control" placeholder="Процессор" required maxlength="100"/>
                 </div>
@@ -244,6 +243,7 @@
 
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Частота процессора:</label>
+
                 <div class="col-sm-6">
                     <input type="text" name="cpuFrequency" class="form-control" placeholder="Частота процессора" required maxlength="100"/>
                 </div>
@@ -251,6 +251,7 @@
 
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Количество ядер:</label>
+
                 <div class="col-sm-6">
                     <input type="text" name="countOfCores" class="form-control" placeholder="Количество ядер" required maxlength="100"/>
                 </div>
@@ -258,6 +259,7 @@
 
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Графический процессор:</label>
+
                 <div class="col-sm-6">
                     <input type="text" name="graphicsProcessor" class="form-control" placeholder="Графический процессор" required maxlength="100"/>
                 </div>
@@ -265,6 +267,7 @@
 
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Год выпуска:</label>
+
                 <div class="col-sm-6">
                     <input type="text" name="yearRelease" class="form-control" placeholder="Год выпуска" required maxlength="100"/>
                 </div>
@@ -276,6 +279,7 @@
         <#if type = "NOTEBOOK">
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Разрешение экрана:</label>
+
                 <div class="col-sm-6">
                     <input type="text" name="screenResolution" class="form-control" placeholder="Разрешение экрана" required maxlength="100"/>
                 </div>
@@ -283,6 +287,7 @@
 
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Диагональ экрана:</label>
+
                 <div class="col-sm-6">
                     <input type="text" name="screenDiagonal" class="form-control" placeholder="Диагональ экрана" required maxlength="100"/>
                 </div>
@@ -290,6 +295,7 @@
 
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Встроенная память:</label>
+
                 <div class="col-sm-6">
                     <select name="internalMemory" class="form-control" required>
                         <option value="1 gb">1 gb</option>
@@ -331,6 +337,7 @@
 
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Оперативная память:</label>
+
                 <div class="col-sm-6">
                     <input type="text" name="ram" class="form-control" placeholder="Оперативная память" required maxlength="100"/>
                 </div>
@@ -338,6 +345,7 @@
 
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Процессор:</label>
+
                 <div class="col-sm-6">
                     <input type="text" name="cpu" class="form-control" placeholder="Процессор" required maxlength="100"/>
                 </div>
@@ -345,6 +353,7 @@
 
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Частота процессора:</label>
+
                 <div class="col-sm-6">
                     <input type="text" name="cpuFrequency" class="form-control" placeholder="Частота процессора" required maxlength="100"/>
                 </div>
@@ -352,6 +361,7 @@
 
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Количество ядер:</label>
+
                 <div class="col-sm-6">
                     <input type="text" name="countOfCores" class="form-control" placeholder="Количество ядер" required maxlength="100"/>
                 </div>
@@ -359,6 +369,7 @@
 
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Графический процессор:</label>
+
                 <div class="col-sm-6">
                     <input type="text" name="graphicsProcessor" class="form-control" placeholder="Графический процессор" required maxlength="100"/>
                 </div>
@@ -366,6 +377,7 @@
 
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Год выпуска:</label>
+
                 <div class="col-sm-6">
                     <input type="text" name="yearRelease" class="form-control" placeholder="Год выпуска" required maxlength="100"/>
                 </div>
@@ -376,6 +388,7 @@
         <#if type = "TV">
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Разрешение экрана:</label>
+
                 <div class="col-sm-6">
                     <input type="text" name="screenResolution" class="form-control" placeholder="Разрешение экрана" required maxlength="100"/>
                 </div>
@@ -383,6 +396,7 @@
 
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Диагональ экрана:</label>
+
                 <div class="col-sm-6">
                     <input type="text" name="screenDiagonal" class="form-control" placeholder="Диагональ экрана" required maxlength="100"/>
                 </div>
@@ -390,6 +404,7 @@
 
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Год выпуска:</label>
+
                 <div class="col-sm-6">
                     <input type="text" name="yearRelease" class="form-control" placeholder="Год выпуска" required maxlength="100"/>
                 </div>
@@ -398,6 +413,7 @@
 
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Операционная система:</label>
+
                 <div class="col-sm-6">
                     <input type="text" name="platform" class="form-control" placeholder="Операционная система" required maxlength="100"/>
                 </div>
@@ -405,6 +421,7 @@
 
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">smart TV:</label>
+
                 <div class="col-sm-6">
                     <input type="text" name="smartTV" class="form-control" placeholder="smartTV" required maxlength="100"/>
                 </div>
@@ -412,6 +429,7 @@
 
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Sleep-таймер:</label>
+
                 <div class="col-sm-6">
                     <input type="text" name="sleepTimer" class="form-control" placeholder="Sleep-таймер" required maxlength="100"/>
                 </div>
@@ -419,6 +437,7 @@
 
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Звук:</label>
+
                 <div class="col-sm-6">
                     <input type="text" name="sound" class="form-control" placeholder="Звук" required maxlength="100"/>
                 </div>
@@ -426,6 +445,7 @@
 
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Тип дистанционного управления:</label>
+
                 <div class="col-sm-6">
                     <input type="text" name="typeOfRemoteControl" class="form-control" placeholder="Тип дистанционного управления" required maxlength="100"/>
                 </div>
@@ -433,6 +453,7 @@
 
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Размер:</label>
+
                 <div class="col-sm-6">
                     <input type="text" name="size" class="form-control" placeholder="Размер" required maxlength="100"/>
                 </div>
@@ -440,6 +461,7 @@
 
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Вес:</label>
+
                 <div class="col-sm-6">
                     <input type="text" name="weight" class="form-control" placeholder="Вес" required maxlength="100"/>
                 </div>
@@ -447,6 +469,7 @@
 
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">HDMI порты:</label>
+
                 <div class="col-sm-6">
                     <input type="text" name="countOfHdmiPorts" class="form-control" placeholder="HDMI порты" required maxlength="100"/>
                 </div>
@@ -473,17 +496,15 @@
 
         <input type="hidden" name="_csrf" value="${_csrf.token}"/>
         <button class="btn btn-primary" type="submit" id="save">Сохранить</button>
-
     </form>
 
     <script>
         function handleFileSelectMulti(evt) {
-            var files = evt.target.files; // FileList object
+            var files = evt.target.files;
             document.getElementById('outputMulti').innerHTML = "";
             var sumSize = 0;
             for (var i = 0, f; f = files[i]; i++) {
 
-                // Only process image files.
                 if (!f.type.match('image.*')) {
                     alert("Только изображения....");
                 }
@@ -497,10 +518,8 @@
 
                 var reader = new FileReader();
 
-                // Closure to capture the file information.
                 reader.onload = (function (theFile) {
                     return function (e) {
-                        // Render thumbnail.
                         var span = document.createElement('span');
                         span.innerHTML = ['<img class="img-thumbnail" src="', e.target.result,
                             '" title="', escape(theFile.name), '"/>'].join('');
@@ -508,7 +527,6 @@
                     };
                 })(f);
 
-                // Read in the image file as a data URL.
                 reader.readAsDataURL(f);
             }
         }

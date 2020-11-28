@@ -12,7 +12,6 @@ public class Attribute implements Comparable<Attribute>{
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "product_id")
     private Product product;
-
     private String name;
     private String value;
 
@@ -25,9 +24,6 @@ public class Attribute implements Comparable<Attribute>{
         this.name = name;
         this.value = value;
     }
-
-
-
 
     public String getId() {
         return id;

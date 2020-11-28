@@ -12,10 +12,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-7">
-
-
                 <form method="post" action="/order/checkout">
-
                     <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Email:</label>
                         <div class="col-sm-8">
@@ -47,12 +44,14 @@
                                         Наличные
                                     </label>
                                 </div>
+
                                 <div class="form-check disabled">
                                     <input class="form-check-input" type="radio" name="typePay" id="gridRadios3" value="Картой">
                                     <label class="form-check-label" for="gridRadios3">
                                         Картой
                                     </label>
                                 </div>
+
                                 <div class="form-check disabled">
                                     <input class="form-check-input" type="radio" name="typePay" id="gridRadios3" value="Онлайн" disabled>
                                     <label class="form-check-label" for="gridRadios3">
@@ -62,8 +61,6 @@
                             </div>
                         </div>
                     </fieldset>
-
-
 
                     <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Полный адрес:</label>
@@ -81,12 +78,10 @@
                         Итоговая сумма: ${sum} ₽
                     </div>
 
-
                     <br>
 
                     <input type="hidden" name="_csrf" value="${_csrf.token}" />
                     <button class="btn btn-primary" type="submit" style="width: 91.5%">Оформить</button>
-
                 </form>
             </div>
 
@@ -94,7 +89,6 @@
                 <div style="text-align: center">
                     <p style="font-size: large; font-weight: bold; color: #007bff">Ваши товары</p>
                 </div>
-
 
                 <#list products as product>
                     <div class="card mb-3" id="cartCard" style="max-width: 25rem;">
@@ -167,7 +161,6 @@
                                     <div class="count" style="font-size: small; color: #007bff; font-weight: bold">
                                         <a class="countBlock">${basketRepo.findByUserAndProductId(user, product.id).count} шт</a>
                                     </div>
-
                                 </div>
                             </div>
                         </div>

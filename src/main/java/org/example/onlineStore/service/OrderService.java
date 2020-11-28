@@ -5,7 +5,6 @@ import org.example.onlineStore.repos.OrderRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -28,7 +27,6 @@ public class OrderService {
     ProductService productService;
 
     public boolean checkout(Order order, User user){
-
         List<Basket> baskets = basketService.findAllByUser(user);
         List<OrderProduct> tempOrderProducts = new ArrayList<>();
         int sum = 0;
@@ -45,7 +43,6 @@ public class OrderService {
             }
 
             Product product = optionalProduct.get();
-
             OrderProduct orderProduct = new OrderProduct();
             orderProduct.setId(product.getId());
             orderProduct.setBrand(product.getBrand());
@@ -56,17 +53,14 @@ public class OrderService {
             orderProduct.setName(product.getName());
             orderProduct.setType(product.getType());
             orderProduct.setCount(basket.getCount());
-
             tempOrderProducts.add(orderProduct);
 
             sum += basket.getCount() * basket.getPrice();
         }
 
-
         order.setStatus(OrderStatus.ACCEPTED);
         order.setProducts(tempOrderProducts);
         order.setCost(sum);
-
 
         if (!StringUtils.isEmpty(user.getEmail())){
             String message = String.format(
@@ -91,7 +85,6 @@ public class OrderService {
         }
 
         reduceProductCountAndRemoveNotRelevantBaskets(order.getId());
-
         List<Basket> userBaskets = basketService.findAllByUser(user);
 
         if (!userBaskets.isEmpty()){
@@ -115,7 +108,6 @@ public class OrderService {
         Order order = optionalOrder.get();
 
         for (OrderProduct productFromOrder : order.getProducts()) {
-
             Optional<Product> optionalProduct = productService.findById(productFromOrder.getId());
 
             if (optionalProduct.isEmpty()){
@@ -126,27 +118,22 @@ public class OrderService {
             product.setCount(product.getCount() - productFromOrder.getCount());
             productService.save(product);
 
-
             for (Basket basketToDelete : basketService.findAllByProductId(productFromOrder.getId())) {
                 if (product.getCount() < basketToDelete.getCount()){
                     basketService.delete(basketToDelete);
                 }
             }
         }
-
     }
 
     public void increaseProductCount(String orderId) {
-
         Optional <Order> optionalOrder = orderRepo.findById(orderId);
-
 
         if (optionalOrder.isEmpty()) {
             return;
         }
 
         Order order = optionalOrder.get();
-
 
         for (OrderProduct productFromOrder : order.getProducts()) {
 
@@ -159,11 +146,7 @@ public class OrderService {
             Product product = optionalProduct.get();
             product.setCount(product.getCount() + productFromOrder.getCount());
             productService.save(product);
-
         }
-
-
-
     }
     
 

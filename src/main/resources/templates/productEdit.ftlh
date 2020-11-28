@@ -1,7 +1,6 @@
 <#import "parts/common.ftlh" as c>
 
 <@c.page>
-
     <#if product.type.name() = "TELEPHONE">
         <p style="font-size: large; font-weight: bold; color: #007bff">
             Редактирование информации о смартфоне/телефоне
@@ -50,11 +49,9 @@
     </#if>
 
     <br>
-
     <br>
 
     <form action="${product.id}" method="post" enctype="multipart/form-data">
-
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Название модели:</label>
 
@@ -313,7 +310,6 @@
             </div>
         </#if>
 
-
         <#if product.type.name() = "NOTEBOOK">
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Разрешение экрана:</label>
@@ -375,6 +371,7 @@
 
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Оперативная память:</label>
+
                 <div class="col-sm-6">
                     <input type="text" name="ram" class="form-control" value="${productService.findByNameAndProduct("ram", product).value}" required maxlength="100"/>
                 </div>
@@ -382,6 +379,7 @@
 
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Процессор:</label>
+
                 <div class="col-sm-6">
                     <input type="text" name="cpu" class="form-control" value="${productService.findByNameAndProduct("cpu", product).value}" required maxlength="100"/>
                 </div>
@@ -389,6 +387,7 @@
 
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Частота процессора:</label>
+
                 <div class="col-sm-6">
                     <input type="text" name="cpuFrequency" class="form-control" value="${productService.findByNameAndProduct("cpuFrequency", product).value}" required maxlength="100"/>
                 </div>
@@ -396,6 +395,7 @@
 
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Количество ядер:</label>
+
                 <div class="col-sm-6">
                     <input type="text" name="countOfCores" class="form-control" value="${productService.findByNameAndProduct("countOfCores", product).value}" required maxlength="100"/>
                 </div>
@@ -403,6 +403,7 @@
 
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Графический процессор:</label>
+
                 <div class="col-sm-6">
                     <input type="text" name="graphicsProcessor" class="form-control" value="${productService.findByNameAndProduct("graphicsProcessor", product).value}" required maxlength="100"/>
                 </div>
@@ -410,6 +411,7 @@
 
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Год выпуска:</label>
+
                 <div class="col-sm-6">
                     <input type="text" name="yearRelease" class="form-control" value="${productService.findByNameAndProduct("yearRelease", product).value}" required maxlength="100"/>
                 </div>
@@ -435,6 +437,7 @@
 
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Год выпуска:</label>
+
                 <div class="col-sm-6">
                     <input type="text" name="yearRelease" class="form-control" value="${productService.findByNameAndProduct("yearRelease", product).value}" required maxlength="100"/>
                 </div>
@@ -442,6 +445,7 @@
 
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Операционная система:</label>
+
                 <div class="col-sm-6">
                     <input type="text" name="platform" class="form-control" value="${productService.findByNameAndProduct("platform", product).value}" required maxlength="100"/>
                 </div>
@@ -449,6 +453,7 @@
 
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">smart TV:</label>
+
                 <div class="col-sm-6">
                     <input type="text" name="smartTV" class="form-control" value="${productService.findByNameAndProduct("smartTV", product).value}" required maxlength="100"/>
                 </div>
@@ -456,6 +461,7 @@
 
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Sleep-таймер:</label>
+
                 <div class="col-sm-6">
                     <input type="text" name="sleepTimer" class="form-control" value="${productService.findByNameAndProduct("sleepTimer", product).value}" required maxlength="100"/>
                 </div>
@@ -463,6 +469,7 @@
 
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Звук:</label>
+
                 <div class="col-sm-6">
                     <input type="text" name="sound" class="form-control" value="${productService.findByNameAndProduct("sound", product).value}" required maxlength="100"/>
                 </div>
@@ -470,6 +477,7 @@
 
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Тип дистанционного управления:</label>
+
                 <div class="col-sm-6">
                     <input type="text" name="typeOfRemoteControl" class="form-control" value="${productService.findByNameAndProduct("typeOfRemoteControl", product).value}" required maxlength="100"/>
                 </div>
@@ -477,6 +485,7 @@
 
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Размер:</label>
+
                 <div class="col-sm-6">
                     <input type="text" name="size" class="form-control" value="${productService.findByNameAndProduct("size", product).value}" required maxlength="100"/>
                 </div>
@@ -484,6 +493,7 @@
 
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Вес:</label>
+
                 <div class="col-sm-6">
                     <input type="text" name="weight" class="form-control" value="${productService.findByNameAndProduct("weight", product).value}" required maxlength="100"/>
                 </div>
@@ -491,6 +501,7 @@
 
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">HDMI порты:</label>
+
                 <div class="col-sm-6">
                     <input type="text" name="countOfHdmiPorts" class="form-control" value="${productService.findByNameAndProduct("countOfHdmiPorts", product).value}" required maxlength="100"/>
                 </div>
@@ -543,12 +554,11 @@
 
     <script>
         function handleFileSelectMulti(evt) {
-            var files = evt.target.files; // FileList object
+            var files = evt.target.files;
             document.getElementById('outputMulti').innerHTML = "";
             var sumSize = 0;
             for (var i = 0, f; f = files[i]; i++) {
 
-                // Only process image files.
                 if (!f.type.match('image.*')) {
                     alert("Только изображения....");
                 }
@@ -562,10 +572,8 @@
 
                 var reader = new FileReader();
 
-                // Closure to capture the file information.
                 reader.onload = (function (theFile) {
                     return function (e) {
-                        // Render thumbnail.
                         var span = document.createElement('span');
                         span.innerHTML = ['<img class="img-thumbnail" src="', e.target.result,
                             '" title="', escape(theFile.name), '"/>'].join('');
@@ -573,7 +581,6 @@
                     };
                 })(f);
 
-                // Read in the image file as a data URL.
                 reader.readAsDataURL(f);
             }
         }
@@ -588,7 +595,6 @@
 
             var color = '${product.color}';
             document.getElementById("colorSelect").value=color;
-
         }
     </script>
 

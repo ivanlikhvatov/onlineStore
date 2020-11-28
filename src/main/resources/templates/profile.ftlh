@@ -4,7 +4,6 @@
     <h5>${username}</h5>
     ${message?ifExists}
     <form method="post">
-
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Имя:</label>
 
@@ -29,10 +28,7 @@
             </div>
         </div>
 
-
-
         <input type="hidden" name="_csrf" value="${_csrf.token}" />
         <button class="btn btn-primary" type="submit">Сохранить</button>
-
     </form>
 </@c.page>

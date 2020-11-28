@@ -41,16 +41,12 @@ public class ProductController {
 
     @GetMapping("/fullInformation/{product}")
     public String fullInformationAboutProduct(@PathVariable Product product, Model model, @AuthenticationPrincipal User user){
-
         User userFromBd = null;
-
         Map<String, Product> productVariationsByColor = new HashMap<>();
         Map<String, Product> productVariationsByMemory = new HashMap<>();
 
         if (product.getType().equals(ProductType.TELEPHONE) && product.getState().equals(ProductState.ACTIVE)){
-
             for (Product tempProduct : productService.findAllByNameAndType(product.getName(), product.getType())){
-
                 if (tempProduct.getState().equals(ProductState.DELETED)){
                     continue;
                 }
@@ -64,13 +60,10 @@ public class ProductController {
                 if (!productVariationsByColor.containsKey(tempColorVariation)){
                     productVariationsByColor.put(tempColorVariation, tempProduct);
                 }
-                
-
             }
 
 
             for (Product tempProduct : productService.findAllByNameAndType(product.getName(), product.getType())){
-
                 if (tempProduct.getState().equals(ProductState.DELETED)){
                     continue;
                 }
@@ -84,16 +77,11 @@ public class ProductController {
                 if (!productVariationsByMemory.containsKey(tempMemoryVariation)){
                     productVariationsByMemory.put(tempMemoryVariation, tempProduct);
                 }
-
-
             }
-
         }
 
         if (product.getType().equals(ProductType.NOTEBOOK) && product.getState().equals(ProductState.ACTIVE)){
-
             for (Product tempProduct : productService.findAllByNameAndBrandAndCountryAndType(product.getName(), product.getBrand(), product.getCountry(), product.getType())){
-
                 boolean isProductEquals = true;
 
                 List<Attribute> tempProductAttributes = attributeRepo.findAllByProduct(tempProduct);
@@ -107,20 +95,15 @@ public class ProductController {
                 }
 
                 for (int i = 0; i < productAttributes.size(); i++){
-
                     if (!productAttributes.get(i).getValue().toLowerCase().replaceAll(" ", "").equals(tempProductAttributes.get(i).getValue().toLowerCase().replaceAll(" ", "")) || !productAttributes.get(i).getName().equals(tempProductAttributes.get(i).getName())){
-
                         isProductEquals = false;
-
                         break;
                     }
-
                 }
 
                 if (isProductEquals && !productVariationsByColor.containsKey(tempProduct.getColor())) {
                     productVariationsByColor.put(tempProduct.getColor(), tempProduct);
                 }
-
             }
         }
 
@@ -146,10 +129,8 @@ public class ProductController {
         model.addAttribute("basketRepo", basketService);
         model.addAttribute("productService", productService);
         model.addAttribute("userFromBd", userFromBd);
-
         model.addAttribute("productVariationsByColor", productVariationsByColor);
         model.addAttribute("productVariationsByMemory", productVariationsByMemory);
-
 
         return "product";
     }
@@ -176,7 +157,6 @@ public class ProductController {
         product.setType(ProductType.valueOf(type));
         product.setState(ProductState.ACTIVE);
 
-
         if (!productService.addProduct(product, allAttributes)){
             model.addAttribute("message", "Product already exists!");
             return "productAdd";
@@ -199,14 +179,11 @@ public class ProductController {
             userFromBd = optionalUserFromBd.get();
         }
 
-
-
         model.addAttribute("type", type);
         model.addAttribute("productService", productService);
         model.addAttribute("basketRepo", basketService);
         model.addAttribute("userFromBd", userFromBd);
         model.addAttribute("filter", filter);
-
 
         if (type.equals("deleted")){
             List<Product> products = productService.findAllByState(ProductState.DELETED);
@@ -296,7 +273,6 @@ public class ProductController {
             }
 
             model.addAttribute("products", products);
-
         }else {
             List<Product> products = new ArrayList<>();
             model.addAttribute("products", products);
@@ -323,7 +299,6 @@ public class ProductController {
             @RequestParam("productId") Product oldProduct,
             @RequestParam("file") List<MultipartFile> files,
             @PathVariable String productId) throws IOException {
-
         newProduct.setType(oldProduct.getType());
         newProduct.setId(oldProduct.getId());
 
@@ -343,7 +318,6 @@ public class ProductController {
     @PostMapping("/deleteProduct")
     @ResponseBody
     public String productDelete(@RequestParam ("productId") Product product){
-
         List<Basket> baskets = basketService.findAllByProductId(product.getId());
 
         if (!baskets.isEmpty()){
@@ -351,12 +325,10 @@ public class ProductController {
         }
 
         userService.deleteUsersFavoriteProduct(product.getId());
-
         product.setState(ProductState.DELETED);
         productService.save(product);
 
         return "product deleted";
-
     }
 
 
@@ -364,11 +336,9 @@ public class ProductController {
     @PostMapping("/activateProduct")
     @ResponseBody
     public String productActivate(@RequestParam ("productId") Product product){
-
         product.setState(ProductState.ACTIVE);
         productService.save(product);
 
         return "product activated";
-
     }
 }

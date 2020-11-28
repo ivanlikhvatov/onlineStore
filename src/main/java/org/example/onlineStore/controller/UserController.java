@@ -83,15 +83,12 @@ public class UserController {
             return "profile";
         }
 
-
-
         return "redirect:/user/profile";
     }
 
     @PostMapping("/addToFavorites")
     @ResponseBody
     public String addToFavorites(@RequestParam ("productId") Product product, @AuthenticationPrincipal User user){
-
         Optional<User> optionalUser = userService.findById(user.getId());
 
         if (optionalUser.isEmpty()){
@@ -100,12 +97,12 @@ public class UserController {
 
         User userFromBd = optionalUser.get();
 
-
         if (!(userFromBd.getFavoritesProducts().containsKey(product.getId())) || !(userFromBd.getFavoritesProducts().containsValue(product.getType().name()))){
             userFromBd.getFavoritesProducts().put(product.getId(), product.getType().name());
         } else {
             userFromBd.getFavoritesProducts().remove(product.getId(), product.getType().name());
         }
+
         userService.saveUser(userFromBd);
         return "telephoneList";
     }
@@ -136,7 +133,6 @@ public class UserController {
     @ResponseBody
     public String deleteOneFromBasket(@RequestParam ("productId") Product product, @AuthenticationPrincipal User user){
         Basket basketFromDb = basketRepo.findByUserAndProductId(user, product.getId());
-
 
         if (basketFromDb.getCount() - 1 <= 0){
             basketRepo.delete(basketFromDb);

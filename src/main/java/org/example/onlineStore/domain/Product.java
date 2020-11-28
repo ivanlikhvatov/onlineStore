@@ -2,14 +2,9 @@ package org.example.onlineStore.domain;
 
 import org.example.onlineStore.insideClasses.LoadableFiles;
 import org.hibernate.annotations.Type;
-
 import javax.persistence.*;
 import java.util.List;
 
-
-
-
-//TODO проверить чтоб цена везде была в double и еще раз свериться с планом из заметок
 @Entity
 @Table(name = "product")
 public class Product implements LoadableFiles {
@@ -34,7 +29,6 @@ public class Product implements LoadableFiles {
     @CollectionTable (name = "pathsToProductImages", joinColumns = @JoinColumn (name = "product_id"))
     @Column (name = "path")
     private List<String> filesNames;
-
 
     public String getId() {
         return id;

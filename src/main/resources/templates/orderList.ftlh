@@ -9,12 +9,10 @@
     <a href="/order/list/ACCEPTED" class="btn btn-primary">Принятые</a>
     <a href="/order/list/ACTIVE" class="btn btn-primary">Активные</a>
     <a href="/order/list/DELIVERED" class="btn btn-primary">Доставленные</a>
+
     <#if user.isAdmin()>
         <a href="/order/list/CANCELED" class="btn btn-primary">Отменённые</a>
     </#if>
-
-
-
 
     <#if user.isAdmin()>
         <div class="form-row" style="margin-top: 2%">
@@ -33,7 +31,6 @@
             <div class="col-md-8">
                 <#list orders as order>
                     <div class="card mb-3 border-primary">
-
                         <div class="card-header">
                             <div class="card-title">
                                 <p style="font-size: x-large; font-weight: bold; color: #007bff">Заказ № ${order.id}</p>
@@ -41,7 +38,6 @@
                         </div>
 
                         <div class="card-body">
-
                             <div class="card-text">
                                 <p>Статус:
                                     <#if order.status.name() = "ACTIVE">Активен</#if>
@@ -89,7 +85,6 @@
                                 <p>Общая стоимость заказа: ${order.cost} ₽</p>
                             </div>
 
-
                             <#if isAdmin>
 
                                 <#if order.status.name() = "ACTIVE">
@@ -104,11 +99,7 @@
                             </#if>
                         </div>
 
-
-
-
                         <div class="card-footer">
-
                             <div class="card-title">
                                 <p style="font-size: x-large; font-weight: bold; color: #007bff">Товары в заказе</p>
                             </div>
@@ -116,12 +107,12 @@
                             <div class="row no-gutters">
                                 <div class="col-md-12">
                                     <#list order.getProducts() as product>
-
                                         <div class="card mb-3">
                                             <div class="row no-gutters">
                                                 <div class="col-md-2" style="padding-top: 6px; padding-bottom: 6px">
                                                     <img id="carousel-image" src="/img/${productService.findById(product.id).get().filesNames[0]}" height="100" alt="...">
                                                 </div>
+
                                                 <div class="col-md-10">
                                                     <div class="card-body">
                                                         <div class="price">${product.price} ₽</div>
@@ -182,28 +173,21 @@
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
                                     </#list>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </#list>
             </div>
         </div>
     </div>
 
-
-
     <br>
     <br>
-
-
     <br>
     <br>
-
 
     <style>
         #carousel-image {
@@ -320,9 +304,6 @@
 
           }
 
-
-
-
         .buttonPlus{text-decoration:none; text-align:center;
             cursor: pointer;
             padding:8px 11px;
@@ -415,14 +396,8 @@
             filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=0 );
             background-image: linear-gradient(top, #fcfcfc 0% ,#ffffff 100%);
             -webkit-box-shadow:inset 0,0,0px 0,0,0px 1,1,1px #ffffff,#ffffff,#ffffff;  -moz-box-shadow:inset 0px 0px 1px #ffffff;  box-shadow:inset 0px 0px 1px #ffffff;
-
         }
     </style>
-
-
-
-
-
 </@c.page>
 
 

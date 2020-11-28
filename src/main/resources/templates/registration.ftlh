@@ -3,6 +3,8 @@
 
 <@c.page>
     <h5>${message?ifExists}</h5>
+
     <br>
+
     <@l.login "/registration" true/>
 </@c.page>

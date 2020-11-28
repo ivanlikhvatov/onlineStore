@@ -3,7 +3,6 @@ package org.example.onlineStore.insideClasses;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -28,9 +27,7 @@ public class MyFile {
 
                 String uuidFile = UUID.randomUUID().toString();
                 String resultFilename = uuidFile + "." + file.getOriginalFilename();
-
                 file.transferTo(new File(uploadPath + "/" + resultFilename));
-
                 namesFiles.add(resultFilename);
             }
         }
@@ -41,7 +38,6 @@ public class MyFile {
 
     public List<String> reloadingFilesAndGetFileNames(List<MultipartFile> files, LoadableFiles reloadableClass) throws IOException {
         List<String> namesFiles = loadFilesAndGetFileNames(files);
-
 
         if (!reloadableClass.getFilesNames().isEmpty() && !namesFiles.isEmpty()){
             for (String fileName : reloadableClass.getFilesNames()) {

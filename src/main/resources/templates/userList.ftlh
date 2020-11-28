@@ -15,22 +15,22 @@
 
     <table class="table">
         <thead>
-        <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Role</th>
-            <th></th>
-        </tr>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th></th>
+            </tr>
         </thead>
         <tbody>
-        <#list users as user>
-            <tr>
-                <td>${user.username}</td>
-                <td>${user.email}</td>
-                <td><#list user.roles as role>${role}<#sep>, </#list></td>
-                <td><a href="/user/${user.id}">edit</a></td>
-            </tr>
-        </#list>
+            <#list users as user>
+                <tr>
+                    <td>${user.username}</td>
+                    <td>${user.email}</td>
+                    <td><#list user.roles as role>${role}<#sep>, </#list></td>
+                    <td><a href="/user/${user.id}">edit</a></td>
+                </tr>
+            </#list>
         </tbody>
     </table>
 </@c.page>

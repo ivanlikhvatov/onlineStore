@@ -9,7 +9,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
-
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -30,11 +29,9 @@ public class UserService implements UserDetailsService {
             return false;
         }
 
-
         user.setActive(false);
         user.setRoles(Collections.singleton(Role.USER));
         user.setActivationCode(UUID.randomUUID().toString());
-
         userRepo.save(user);
 
         if (!StringUtils.isEmpty(user.getEmail())){
@@ -70,7 +67,6 @@ public class UserService implements UserDetailsService {
     }
 
     public void saveUser(User user, Map<String, String> form) {
-
         Set<String> roles = Arrays.stream(Role.values())
                 .map(Role::name)
                 .collect(Collectors.toSet());
@@ -91,7 +87,6 @@ public class UserService implements UserDetailsService {
     }
 
     public boolean updateProfile(User user, String password, String email, String username) {
-
         if (!StringUtils.isEmpty(password)){
             user.setPassword(password);
         }
@@ -101,7 +96,6 @@ public class UserService implements UserDetailsService {
         }
 
         userRepo.save(user);
-
         String userEmail = user.getEmail();
 
         boolean isEmailChanged = (email != null && !email.equals(userEmail)) ||
@@ -136,7 +130,6 @@ public class UserService implements UserDetailsService {
         }
 
         return true;
-
     }
 
     public void deleteUsersFavoriteProduct(String productId) {
@@ -148,7 +141,6 @@ public class UserService implements UserDetailsService {
                 userRepo.save(user);
             }
         }
-
     }
 
     @Override

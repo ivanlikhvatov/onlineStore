@@ -9,7 +9,9 @@ import java.util.List;
 
 public interface AttributeRepo extends JpaRepository<Attribute, String> {
     Attribute findByNameAndValue(String name, String value);
+
     Attribute findByNameAndProduct(String name, Product product);
+
     List<Attribute> findAllByProduct(Product product);
 
     Attribute findByProductAndNameAndValue(Product product, String name, String value);

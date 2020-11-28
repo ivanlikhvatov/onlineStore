@@ -19,7 +19,6 @@ public class Basket {
     @JoinColumn(name = "user_id")
     private User user;
 
-
     public Long getId() {
         return id;
     }

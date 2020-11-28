@@ -15,7 +15,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.*;
 import java.util.regex.Pattern;
 
@@ -61,8 +60,6 @@ public class OrderController {
         model.addAttribute("basketRepo", basketService);
         model.addAttribute("productService", productService);
 
-
-
         if ((email.length() > 255) || (StringUtils.isEmpty(email))
                 || (phoneNumber.length() > 255) || (StringUtils.isEmpty(phoneNumber))
                 || (userName.length() > 255) || (StringUtils.isEmpty(userName))){
@@ -70,14 +67,12 @@ public class OrderController {
             return "checkoutPage";
         }
 
-
         if (!Pattern.matches(emailPattern.toString(), email)){
             model.addAttribute("message", "Неккоректные данные");
             return "checkoutPage";
         }
 
         Order order = new Order();
-
         order.setId(UUID.randomUUID().toString());
         order.setActivationCode(UUID.randomUUID().toString());
         order.setEmail(email);
@@ -87,7 +82,6 @@ public class OrderController {
         order.setTypePay(typePay);
         order.setAddress(address);
         order.setDispatchDate(new Date().toString());
-
 
         if (!orderService.checkout(order, user)){
             model.addAttribute("message", "Что-то пошло не так");
@@ -99,9 +93,6 @@ public class OrderController {
 
     @GetMapping("/number/{orderId}")
     public String orderNumber(Model model, @PathVariable String orderId){
-
-        System.out.println("id заказа: "+orderId);
-
         model.addAttribute("orderId", orderId);
         model.addAttribute("basketRepo", basketService);
 
@@ -121,7 +112,6 @@ public class OrderController {
         boolean isConfirm = orderService.confirmOrder(code, user);
         model.addAttribute("basketRepo", basketService);
 
-
         if (isConfirm){
             model.addAttribute("message", "заказ успешно подтвержден.");
         } else {
@@ -140,7 +130,6 @@ public class OrderController {
         List<Order> orders = new ArrayList<>();
 
         if (user.isAdmin()){
-
             if (status.equals("all")){
                 orders = orderService.findAll();
 
@@ -180,10 +169,7 @@ public class OrderController {
                     orders = orderService.findAllByUserAndStatus(userService.findByEmail(filter), OrderStatus.CANCELED);
                 }
             }
-
-
         } else {
-
             if (status.equals("all")){
                 orders = orderService.findAllByUser(user);
             }
@@ -199,11 +185,7 @@ public class OrderController {
             if (status.equals("DELIVERED")){
                 orders = orderService.findAllByUserAndStatus(user, OrderStatus.DELIVERED);
             }
-
         }
-
-
-
 
         model.addAttribute("orders", orders);
         model.addAttribute("user", user);
@@ -213,7 +195,6 @@ public class OrderController {
         model.addAttribute("basketRepo", basketService);
         model.addAttribute("productsId");
 
-
         return "orderList";
     }
 
@@ -221,7 +202,6 @@ public class OrderController {
     @PostMapping("/doActive")
     @ResponseBody
     public String doActive(@RequestParam (name = "orderId") String orderId){
-
         Optional<Order> optionalOrder = orderService.findById(orderId);
 
         if (optionalOrder.isEmpty()){
@@ -237,7 +217,6 @@ public class OrderController {
         order.setStatus(OrderStatus.ACTIVE);
         orderService.save(order);
         orderService.reduceProductCountAndRemoveNotRelevantBaskets(orderId);
-
         orderService.sendMailAboutOrderIsActive(order);
 
         return "order is active";
@@ -261,9 +240,7 @@ public class OrderController {
 
         order.setStatus(OrderStatus.DELIVERED);
         order.setDeliveredDate(new Date().toString());
-
         orderService.save(order);
-
         orderService.sendMailAboutOrderIsDelivered(order);
 
         return "order is delivered";
@@ -305,7 +282,6 @@ public class OrderController {
         order.setStatus(OrderStatus.CANCELED);
         orderService.save(order);
         orderService.increaseProductCount(orderId);
-
         orderService.sendMailAboutOrderIsCanceled(order, reason);
 
         return "redirect:/order/list/all";

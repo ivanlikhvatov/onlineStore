@@ -2,87 +2,64 @@
 
     <div style="background-color:#4285F4; ">
         <div class="container">
-
-            <!-- Grid row-->
             <div class="row py-4 d-flex align-items-center">
-
-                <!-- Grid column -->
                 <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
                     <h6 class="mb-0">Информация о нас</h6>
                 </div>
-                <!-- Grid column -->
-
-
             </div>
-            <!-- Grid row-->
-
         </div>
     </div>
 
-    <!-- Footer Links -->
     <div class="container text-center text-md-left mt-5">
-
-        <!-- Grid row -->
         <div class="row mt-3 dark-grey-text">
-
-            <!-- Grid column -->
             <div class="col-md-3 col-lg-4 col-xl-3 mb-4">
-
-                <!-- Content -->
                 <h6 class="text-uppercase font-weight-bold">Название компании</h6>
                 <hr class="accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 150px; background-color: #4285F4">
                 <p>Techport</p>
-
             </div>
-            <!-- Grid column -->
 
-            <!-- Grid column -->
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-
-                <!-- Links -->
                 <h6 class="text-uppercase font-weight-bold">Товары</h6>
                 <hr class="accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #4285F4">
+
                 <p>
                     <a class="dark-grey-text" href="/product/${"TELEPHONE"}/list">Телефоны</a>
                 </p>
+
                 <p>
                     <a class="dark-grey-text" href="/product/${"TV"}/list">Телевизоры</a>
                 </p>
+
                 <p>
                     <a class="dark-grey-text" href="/product/${"NOTEBOOK"}/list">Ноутбуки</a>
                 </p>
+
                 <p>
                     <a class="dark-grey-text" href="/product/${"COMPUTER"}/list">Компьютеры</a>
                 </p>
+
                 <p>
                     <a class="dark-grey-text" href="/product/${"all"}/list">Все товары</a>
                 </p>
-
             </div>
-            <!-- Grid column -->
 
-            <!-- Grid column -->
             <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-
-                <!-- Links -->
                 <h6 class="text-uppercase font-weight-bold">Профиль</h6>
                 <hr class="accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #4285F4">
 
                 <p>
                     <a class="dark-grey-text" href="/user/profile">Ваш аккаунт</a>
                 </p>
+
                 <p>
                     <a class="dark-grey-text" href="/order/list/active">Список заказов</a>
                 </p>
             </div>
-            <!-- Grid column -->
 
-            <!-- Grid column -->
             <div class="col-md-4 col-lg-3 col-xl-4 mx-auto mb-md-0 mb-4">
-
-                <!-- Links -->
                 <h6 class="text-uppercase font-weight-bold">Контакты</h6>
                 <hr class="accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #4285F4">
+
                 <p>
                     <i style="top: 3px; position: relative">
                         <svg class="bi bi-house-door" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -90,14 +67,16 @@
                             <path fill-rule="evenodd" d="M13 2.5V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
                         </svg>
                     </i>
-
                     Россия, Саратов, ул.Советская, д.34
-
                 </p>
+
                 <p>
                     <i>
                         <img src="https://img.icons8.com/material-outlined/24/000000/important-mail.png"/>
-                    </i> ivanlikhvatov@icloud.com</p>
+                    </i>
+                    forlikhvatovtestprojects@gmail.com
+                </p>
+
                 <p>
                     <i style="top: 3px; position: relative">
                         <svg class="bi bi-phone" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -105,7 +84,7 @@
                             <path fill-rule="evenodd" d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
                         </svg>
                     </i>
-                    + 7 (927) 154 04 04
+                    + 7 (927) 363 63 63
                 </p>
 
                 <p>
@@ -114,23 +93,14 @@
                             <path fill-rule="evenodd" d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v13h-1V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51L2 2.118V15H1V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zM0 15.5a.5.5 0 0 1 .5-.5h15a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
                             <path fill-rule="evenodd" d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-8a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z"/>
                         </svg>
-                    </i> + 7 (927) 154 04 04
+                    </i>
+                    + 7 (927) 363 36 36
                 </p>
-
             </div>
-            <!-- Grid column -->
-
         </div>
-        <!-- Grid row -->
-
     </div>
-    <!-- Footer Links -->
 
-    <!-- Copyright -->
     <div class="footer-copyright text-center stylish-color-dark text-white py-3" >
         <p style="bottom: 13px; position: relative" >© 2020 Techport</p>
     </div>
-    <!-- Copyright -->
-
 </footer>
-<!-- Footer -->

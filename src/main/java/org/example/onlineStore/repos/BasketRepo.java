@@ -8,6 +8,8 @@ import java.util.List;
 
 public interface BasketRepo extends JpaRepository<Basket, Long> {
     Basket findByUserAndProductId(User user, String productId);
+
     List<Basket> findAllByUser(User user);
+
     List<Basket> findAllByProductId(String Id);
 }

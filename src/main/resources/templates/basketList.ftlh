@@ -80,7 +80,6 @@
                                     </div>
                                 </#if>
 
-
                                 <#if product.count != 0>
                                     <div class="card-text topCardText">
                                         <div class="greenCircle"></div>
@@ -122,7 +121,6 @@
                                     </a>
                                 </div>
 
-
                                 <div style="display: flex; margin-top: 20px">
                                     <div>
                                         <a href="/product/fullInformation/${product.id}" class="btn btn-primary">Подробнее</a>
@@ -149,7 +147,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
                 </#list>
             </div>
@@ -159,50 +156,49 @@
                 <#assign sum = sum + product.count * product.price>
             </#list>
 
-
             <#assign count = 0>
             <#list basketRepo.findAllByUser(userFromBd) as product>
                 <#assign count = count + product.count>
             </#list>
-                <div class="col-md-offset-1">
-                    <div class="card mb-3" id="cartCard" style="max-width: 19rem;">
-                        <div class="card-body">
-                            <div class="card-text" style="display: flex">
-                                <div style="font-weight: bolder; font-size: medium; color: #007bff">
-                                    В вашей корзине
-                                </div>
-
-                                <small style="font-size: x-small; margin-left: 5px">
-                                    #{count}
-
-                                    <#if count % 10 = 1 && count % 100 != 11>
-                                        товар
-                                    <#elseIf (count % 10 = 2 || count % 10 = 3 || count % 10 = 4) && (count % 100 != 12 && count % 100 != 13 && count % 100 != 14)>
-                                        товара
-                                    <#else>
-                                        товаров
-                                    </#if>
-                                </small>
-
-
+            <div class="col-md-offset-1">
+                <div class="card mb-3" id="cartCard" style="max-width: 19rem;">
+                    <div class="card-body">
+                        <div class="card-text" style="display: flex">
+                            <div style="font-weight: bolder; font-size: medium; color: #007bff">
+                                В вашей корзине
                             </div>
-                            <div class="card-text" style="display: flex">
-                                <div style="font-weight: bold; font-size: small">
-                                    Сумма при <br> получении заказа:
-                                </div>
 
-                                <div style="font-weight: bolder; font-size: medium; color: #007bff; margin-left: 20px; margin-top: 4px">
-                                    ${sum} ₽
-                                </div>
+                            <small style="font-size: x-small; margin-left: 5px">
+                                #{count}
+
+                                <#if count % 10 = 1 && count % 100 != 11>
+                                    товар
+                                <#elseIf (count % 10 = 2 || count % 10 = 3 || count % 10 = 4) && (count % 100 != 12 && count % 100 != 13 && count % 100 != 14)>
+                                    товара
+                                <#else>
+                                    товаров
+                                </#if>
+                            </small>
+                        </div>
+
+                        <div class="card-text" style="display: flex">
+                            <div style="font-weight: bold; font-size: small">
+                                Сумма при <br> получении заказа:
+                            </div>
+
+                            <div style="font-weight: bolder; font-size: medium; color: #007bff; margin-left: 20px; margin-top: 4px">
+                                ${sum} ₽
                             </div>
                         </div>
                     </div>
-                    <#if basketRepo.findAllByUser(userFromBd)?hasContent>
-                        <a href="/order/checkout" class="btn btn-primary" id="checkoutButton">Оформить заказ</a>
-                        <#else>
-                        <div class="btn btn-primary" id="checkoutButton">Добавьте товар</div>
-                    </#if>
                 </div>
+
+                <#if basketRepo.findAllByUser(userFromBd)?hasContent>
+                    <a href="/order/checkout" class="btn btn-primary" id="checkoutButton">Оформить заказ</a>
+                <#else>
+                    <div class="btn btn-primary" id="checkoutButton">Добавьте товар</div>
+                </#if>
+            </div>
         </div>
     </div>
 

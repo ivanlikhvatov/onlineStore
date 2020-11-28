@@ -3,19 +3,16 @@
 <nav class="navbar navbar-expand-md navbar-dark brown stylish-color-dark" id="firstNavbar">
     <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
         <ul class="navbar-nav mr-auto">
-
             <a class="navbar-brand" href="/">TechPort</a>
 
             <li class="nav-item">
                 <a class="nav-link" href="#"></a>
             </li>
-
         </ul>
     </div>
 
     <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
         <ul class="navbar-nav ml-auto">
-
             <#if user??>
                 <li class="nav-item">
                     <a class="nav-link" href="/favorites/list">
@@ -83,7 +80,6 @@
 </nav>
 
 <nav class="navbar navbar-expand-md navbar-dark primary-color bg-company-red">
-
     <div>
         <ul class="navbar-nav">
             <li class="nav-item">
@@ -122,7 +118,6 @@
             <li class="nav-item">
                 <div class="btn" style="width: 150px; background-color: #7b1fa2">
                     <a href="/basket" style="color: white; text-decoration: none">
-
                         <#if user?? && user.isEnabled()>
                             <span>
                                 <svg class="bi bi-cart" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor"
@@ -163,7 +158,6 @@
                                     <span>0</span> товаров
                                 </span>
                         </#if>
-
                     </a>
                 </div>
             </li>

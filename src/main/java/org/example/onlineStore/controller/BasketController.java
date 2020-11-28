@@ -12,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -35,14 +34,9 @@ public class BasketController {
         List<Product> products = basketService.getProductsFromUserBaskets(user);
         List<Basket> userBaskets = basketService.findAllByUser(user);
 
-
-
-
         if (filter != null && !filter.isEmpty() && !userBaskets.isEmpty()){
             products.retainAll(productService.findAllByName(filter));
         }
-
-
 
         Optional<User> optionalUserFromBd = userService.findById(user.getId());
 
@@ -50,9 +44,7 @@ public class BasketController {
             return "greeting";
         }
 
-
         User userFromBd = optionalUserFromBd.get();
-
 
         model.addAttribute("products", products);
         model.addAttribute("userFromBd", userFromBd);

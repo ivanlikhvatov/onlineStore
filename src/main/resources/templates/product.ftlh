@@ -1,7 +1,6 @@
 <#import "parts/common.ftlh" as c>
 <#include "parts/security.ftlh">
 <@c.page>
-
     <#if product.type.name() = "TELEPHONE">
         <p style="font-size: x-large; color: #007bff">
            ${product.brand}
@@ -45,7 +44,6 @@
         </p>
     </#if>
 
-
     <br>
 
     <div class="container">
@@ -87,7 +85,6 @@
 
                     <#if product.filesNames?hasContent>
                         <div class="carousel-inner card-img-top">
-
                             <#if product.filesNames[0]?hasContent>
                                 <div class="carousel-item active">
                                     <img id="carousel-image" src="/img/${product.filesNames[0]}" height="350" alt="...">
@@ -143,12 +140,10 @@
             <div class="">
                 <div class="card mt-3" style="width: 30rem;">
                     <div class="card-body">
-
                         <div class="row" style="margin-left: 1px; margin-bottom: 20px">
                             <h5 class="card-title text-muted" style="margin-top: 5px; margin-right: 40px">Цвет    </h5>
 
                             <#list productVariationsByColor as color, productWithNeedColor>
-
                                 <#if color = "Green">
                                     <#if product.color = "Green">
                                         <a id="colorRound" class="colorRound" value="Green" style="background: #1f4f16; margin-left: 20px; box-shadow: 0 0 0 2px white, 0 0 0 4px #007bff;">
@@ -220,7 +215,6 @@
                                         </a>
                                     </#if>
                                 </#if>
-
                             </#list>
                         </div>
 
@@ -228,7 +222,6 @@
                             <h5 class="card-title text-muted" style="margin-top: 5px; margin-right: 40px">Память    </h5>
 
                             <#list productVariationsByMemory as memory, productWithNeedMemory>
-
                                 <#if memory = "64 gb">
                                     <#if productService.findByNameAndProduct("internalMemory", product).value = "64 gb">
                                         <a id="memoryRectangle" style="box-shadow: 0 0 0 2px #007bff;">
@@ -337,6 +330,7 @@
                                         </svg>
                                     </#if>
                                 </a>
+
                                 <#if (product.count > 0)>
                                     <#if basketRepo.findByUserAndProductId(userFromBd, product.id)??>
                                         <#if (basketRepo.findByUserAndProductId(userFromBd, product.id).count < product.count)>
@@ -352,7 +346,9 @@
                                                           d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
                                                 </svg>
                                             </a>
+
                                             <div id="iconsOnCard">${basketRepo.findByUserAndProductId(userFromBd, product.id).count}</div>
+
                                             <a class="deleteOneFromBasket" id="iconsOnCard" value="${product.id}">
                                                 <svg class="bi bi-cart-dash" width="1.7em" height="1.7em"
                                                      viewBox="0 0 16 16" fill="currentColor"
@@ -376,7 +372,9 @@
                                                           d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
                                                 </svg>
                                             </a>
+
                                             <div id="iconsOnCard">${basketRepo.findByUserAndProductId(userFromBd, product.id).count}</div>
+
                                             <a class="deleteOneFromBasket" id="iconsOnCard" value="${product.id}">
                                                 <svg class="bi bi-cart-dash" width="1.7em" height="1.7em"
                                                      viewBox="0 0 16 16" fill="currentColor"
@@ -403,7 +401,6 @@
                                         </a>
                                     </#if>
                                 </#if>
-
                             <#else>
                                 <a id="iconsOnCard" href="/login">
                                     <svg class="bi bi-heart" width="1.7em" height="1.7em" viewBox="0 0 16 16"
@@ -412,6 +409,7 @@
                                               d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
                                     </svg>
                                 </a>
+
                                 <a id="iconsOnCard" href="/login">
                                     <svg class="bi bi-cart" width="1.7em" height="1.7em" viewBox="0 0 16 16"
                                          fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -420,18 +418,11 @@
                                     </svg>
                                 </a>
                             </#if>
-
-
-
-
                         </div>
 
                         <hr class="accent-4 mb-2 mt-0 d-inline-block mx-auto" style="width: 90%; background-color: #4285F4">
-
                         <h5 class="card-title text-muted">Производитель:    ${product.brand}</h5>
                         <h5 class="card-title text-muted">Описание:    ${product.description}</h5>
-
-
                     </div>
                 </div>
             </div>
@@ -441,10 +432,7 @@
         <div class="card" style="width: 90%; margin-top: 10%">
             <div class="card-body">
                 <p class="card-title" style="font-size: x-large; color: #007bff">Характеристики</p>
-
-
                 <h5 class="card-title text-muted">Страна производитель: ${product.country}</h5>
-
 
                 <#if product.type.name() = "TELEPHONE">
                     <h5 class="card-title text-muted">Диагональ экрана: ${productService.findByNameAndProduct("screenDiagonal", product).value}</h5>
@@ -493,21 +481,14 @@
                     <h5 class="card-title text-muted">Вес: ${productService.findByNameAndProduct("weight", product).value}</h5>
                     <h5 class="card-title text-muted">Количество HDMI портов: ${productService.findByNameAndProduct("countOfHdmiPorts", product).value}</h5>
                 </#if>
-
             </div>
         </div>
-
-
     </div>
 
-
     <br>
     <br>
-
-
     <br>
     <br>
-
 
     <style>
         #carousel-image {
