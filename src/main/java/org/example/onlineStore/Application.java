@@ -9,13 +9,3 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 }
-
-//public class Application {
-//    public static void main(String[] args) {
-//        String string = "TELEPHONE";
-//
-//        TypeProduct en = TypeProduct.valueOf(string);
-//
-//        System.out.println(en.name());
-//    }
-//}

@@ -3,6 +3,7 @@ package org.example.onlineStore.controller;
 import org.example.onlineStore.domain.User;
 import org.example.onlineStore.repos.BasketRepo;
 import org.example.onlineStore.service.ProductService;
+import org.example.onlineStore.service.SliderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -18,10 +19,14 @@ public class MainController {
     @Autowired
     ProductService productService;
 
+    @Autowired
+    SliderService sliderService;
+
     @GetMapping("/")
     public String greeting (Model model){
         model.addAttribute("basketRepo", basketRepo);
         model.addAttribute("productService", productService);
+        model.addAttribute("mainSlider", sliderService.findByName("mainSlider"));
         return "greeting";
     }
 
