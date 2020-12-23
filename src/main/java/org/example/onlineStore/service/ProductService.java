@@ -309,6 +309,17 @@ public class ProductService {
         return attributeRepo.findByNameAndProduct(name, product);
     }
 
+    public Attribute findByNameAndProductId(String name, OrderProduct orderProduct){
+        Optional<Product> optionalProduct = productRepo.findById(orderProduct.getId());
+        Product product = new Product();
+
+        if (optionalProduct.isPresent()){
+            product = optionalProduct.get();
+        }
+
+        return attributeRepo.findByNameAndProduct(name, product);
+    }
+
     public List<Attribute> findAllByProduct(Product product){
         return attributeRepo.findAllByProduct(product);
     }

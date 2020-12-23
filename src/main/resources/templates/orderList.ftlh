@@ -52,16 +52,16 @@
                             </div>
 
                             <div class="card-text">
-                                <p>Дата и время отправки: ${order.dispatchDate}</p>
+                                <p>Дата и время отправки: ${order.dispatchDate.toString()}</p>
                             </div>
 
                             <div class="card-text">
-                                <p>Ожидаемые дата и время доставки: ${order.dispatchDate}</p>
+                                <p>Ожидаемые дата и время доставки: ${order.dispatchDate.toString()}</p>
                             </div>
 
                             <#if order.status.name() = "DELIVERED">
                                 <div class="card-text">
-                                    <p>Был доставлен: ${order.deliveredDate}</p>
+                                    <p>Был доставлен: ${order.deliveredDate.toString()}</p>
                                 </div>
                             </#if>
 

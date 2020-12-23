@@ -115,9 +115,12 @@ public class ProductController {
             productVariationsByColor.put(product.getColor(), product);
         }
 
-        if (productVariationsByMemory.isEmpty()){
-            productVariationsByMemory.put(attributeRepo.findByNameAndProduct("internalMemory", product).getValue(), product);
+        if (product.getType().equals(ProductType.NOTEBOOK) || product.getType().equals(ProductType.COMPUTER) || product.getType().equals(ProductType.TELEPHONE)){
+            if (productVariationsByMemory.isEmpty()){
+                productVariationsByMemory.put(attributeRepo.findByNameAndProduct("internalMemory", product).getValue(), product);
+            }
         }
+
 
         if (user != null){
             Optional<User> optionalUserFromBd = userService.findById(user.getId());

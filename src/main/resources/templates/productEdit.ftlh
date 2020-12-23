@@ -44,7 +44,7 @@
             Редактирование информации о телевизоре
             ${product.brand}
             ${product.name}
-            ${productService.findByNameAndProduct("screenDiagonal", product)}
+            ${productService.findByNameAndProduct("screenDiagonal", product).value}
         </p>
     </#if>
 

@@ -215,15 +215,78 @@
                                         </a>
                                     </#if>
                                 </#if>
+
+                                <#if color = "Red">
+                                    <#if product.color = "Red">
+                                        <a id="colorRound" class="colorRound" value="Red" style="background: #CC0000; margin-left: 20px; box-shadow: 0 0 0 2px white, 0 0 0 4px #007bff;">
+
+                                        </a>
+                                    <#elseIf product.type.name() = "TELEPHONE" || product.type.name() = "NOTEBOOK">
+                                        <a id="colorRound" class="colorRound" href="/product/fullInformation/${productWithNeedColor.id}" value="Red" style="background: #CC0000; margin-left: 20px">
+
+                                        </a>
+                                    </#if>
+                                </#if>
+
+                                <#if color = "Yellow">
+                                    <#if product.color = "Yellow">
+                                        <a id="colorRound" class="colorRound" value="Yellow" style="background: #ffea00; margin-left: 20px; box-shadow: 0 0 0 2px white, 0 0 0 4px #007bff;">
+
+                                        </a>
+                                    <#elseIf product.type.name() = "TELEPHONE" || product.type.name() = "NOTEBOOK">
+                                        <a id="colorRound" class="colorRound" href="/product/fullInformation/${productWithNeedColor.id}" value="Yellow" style="background: #ffea00; margin-left: 20px">
+
+                                        </a>
+                                    </#if>
+                                </#if>
+
+                                <#if color = "Purple">
+                                    <#if product.color = "Purple">
+                                        <a id="colorRound" class="colorRound" value="Purple" style="background: #9575cd; margin-left: 20px; box-shadow: 0 0 0 2px white, 0 0 0 4px #007bff;">
+
+                                        </a>
+                                    <#elseIf product.type.name() = "TELEPHONE" || product.type.name() = "NOTEBOOK">
+                                        <a id="colorRound" class="colorRound" href="/product/fullInformation/${productWithNeedColor.id}" value="Purple" style="background: #9575cd; margin-left: 20px">
+
+                                        </a>
+                                    </#if>
+                                </#if>
+
+                                <#if color = "WhiteGreen">
+                                    <#if product.color = "WhiteGreen">
+                                        <a id="colorRound" class="colorRound" value="WhiteGreen" style="background: lightgreen; margin-left: 20px; box-shadow: 0 0 0 2px white, 0 0 0 4px #007bff;">
+
+                                        </a>
+                                    <#elseIf product.type.name() = "TELEPHONE" || product.type.name() = "NOTEBOOK">
+                                        <a id="colorRound" class="colorRound" href="/product/fullInformation/${productWithNeedColor.id}" value="WhiteGreen" style="background: lightgreen; margin-left: 20px">
+
+                                        </a>
+                                    </#if>
+                                </#if>
                             </#list>
                         </div>
 
                         <div class="row" style="margin-left: 1px; margin-bottom: 20px">
-                            <h5 class="card-title text-muted" style="margin-top: 5px; margin-right: 40px">Память    </h5>
+
+                            <#if product.type.name() != "TV">
+                                <h5 class="card-title text-muted" style="margin-top: 5px; margin-right: 40px">Память    </h5>
+                            </#if>
 
                             <#list productVariationsByMemory as memory, productWithNeedMemory>
                                 <#if memory = "64 gb">
                                     <#if productService.findByNameAndProduct("internalMemory", product).value = "64 gb">
+                                        <a id="memoryRectangle" style="box-shadow: 0 0 0 2px #007bff;">
+                                            ${memory}
+                                        </a>
+                                    <#elseIf product.type.name() = "TELEPHONE">
+                                        <a id="memoryRectangle" href="/product/fullInformation/${productWithNeedMemory.id}">
+                                            ${memory}
+                                        </a>
+                                    </#if>
+                                </#if>
+
+                                <#if memory = "128 gb">
+                                    <#if productService.findByNameAndProduct("internalMemory", product).value = "128 gb">
                                         <a id="memoryRectangle" style="box-shadow: 0 0 0 2px #007bff;">
                                             ${memory}
                                         </a>

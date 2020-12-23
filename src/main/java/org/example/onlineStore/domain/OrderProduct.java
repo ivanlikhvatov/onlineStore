@@ -3,6 +3,7 @@ package org.example.onlineStore.domain;
 import javax.persistence.Embeddable;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import java.util.Objects;
 
 @Embeddable
 public class OrderProduct {
@@ -91,4 +92,24 @@ public class OrderProduct {
         this.description = description;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        OrderProduct that = (OrderProduct) o;
+        return Double.compare(that.price, price) == 0 &&
+                id.equals(that.id) &&
+                count.equals(that.count) &&
+                type == that.type &&
+                name.equals(that.name) &&
+                brand.equals(that.brand) &&
+                country.equals(that.country) &&
+                color.equals(that.color) &&
+                description.equals(that.description);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, count, type, name, price, brand, country, color, description);
+    }
 }

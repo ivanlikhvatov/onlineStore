@@ -1,6 +1,7 @@
 package org.example.onlineStore.repos;
 
 import org.example.onlineStore.domain.Order;
+import org.example.onlineStore.domain.OrderProduct;
 import org.example.onlineStore.domain.OrderStatus;
 import org.example.onlineStore.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;

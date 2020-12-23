@@ -170,6 +170,18 @@ public class OrderService {
         return orderRepo.findById(orderId);
     }
 
+    public OrderProduct findProductById(String id){
+        for(Order order : orderRepo.findAll()){
+            for (OrderProduct product : order.getProducts()) {
+                if (product.getId().equals(id)){
+                    return product;
+                }
+            }
+        }
+
+        return orderRepo.findAll().get(0).getProducts().get(0);
+    }
+
     public void save(Order order) {
         orderRepo.save(order);
     }

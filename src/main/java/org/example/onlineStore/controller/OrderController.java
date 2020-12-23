@@ -15,6 +15,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.*;
 import java.util.regex.Pattern;
 
@@ -81,7 +84,9 @@ public class OrderController {
         order.setUser(user);
         order.setTypePay(typePay);
         order.setAddress(address);
-        order.setDispatchDate(new Date().toString());
+
+        order.setDispatchDate(LocalDateTime.now());
+//        order.setDispatchDate(LocalDateTime.of(2020, Month.DECEMBER, 16, 12, 17));
 
         if (!orderService.checkout(order, user)){
             model.addAttribute("message", "Что-то пошло не так");
@@ -239,7 +244,9 @@ public class OrderController {
         }
 
         order.setStatus(OrderStatus.DELIVERED);
-        order.setDeliveredDate(new Date().toString());
+
+        order.setDeliveredDate(LocalDateTime.now());
+//        order.setDeliveredDate(LocalDateTime.of(2020, Month.NOVEMBER, 11, 12, 37));
         orderService.save(order);
         orderService.sendMailAboutOrderIsDelivered(order);
 

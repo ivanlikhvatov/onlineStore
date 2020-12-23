@@ -68,6 +68,7 @@
                         <button class="dropdown-item" onclick="document.location='/slider/add'">Добавить слайдер</button>
                         <button class="dropdown-item" onclick="document.location='/listProductForEdit'">Редактировать данные о товаре</button>
                         <button class="dropdown-item" onclick="document.location='/slider/list'">Редактировать слайдер</button>
+                        <button class="dropdown-item" onclick="document.location='/report'">Продажи</button>
                     </#if>
 
                     <#if user??>

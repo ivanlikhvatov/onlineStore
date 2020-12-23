@@ -1,6 +1,10 @@
 package org.example.onlineStore.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonView;
+
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -17,7 +21,7 @@ public class Order {
     @CollectionTable (name = "order_products")
     private List<OrderProduct> products;
 
-    private double cost;
+    private int cost;
     private String typePay;
 
     @Enumerated(EnumType.STRING)
@@ -27,9 +31,12 @@ public class Order {
     private String userName;
     private String email;
     private String address;
-    private String dispatchDate;
-    private String deliveredDate;
     private String activationCode;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime dispatchDate;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime deliveredDate;
 
 
     public String getId() {
@@ -57,11 +64,11 @@ public class Order {
         this.user = user;
     }
 
-    public double getCost() {
+    public int getCost() {
         return cost;
     }
 
-    public void setCost(double cost) {
+    public void setCost(int cost) {
         this.cost = cost;
     }
 
@@ -113,19 +120,19 @@ public class Order {
         this.address = address;
     }
 
-    public String getDispatchDate() {
+    public LocalDateTime getDispatchDate() {
         return dispatchDate;
     }
 
-    public void setDispatchDate(String dispatchDate) {
+    public void setDispatchDate(LocalDateTime dispatchDate) {
         this.dispatchDate = dispatchDate;
     }
 
-    public String getDeliveredDate() {
+    public LocalDateTime getDeliveredDate() {
         return deliveredDate;
     }
 
-    public void setDeliveredDate(String deliveredDate) {
+    public void setDeliveredDate(LocalDateTime deliveredDate) {
         this.deliveredDate = deliveredDate;
     }
 
