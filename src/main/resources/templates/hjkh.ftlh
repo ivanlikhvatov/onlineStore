@@ -52,12 +52,11 @@
     <br>
 
     <form action="${product.id}" method="post" enctype="multipart/form-data">
-
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Название модели:</label>
 
             <div class="col-sm-6">
-                <select name="name" class="form-control" id="nameSelect" required>
+                <select name="name" class="form-control" value="${product.name}" required>
                     <#list directoryRepo.findAllByName("name") as directory>
                         <option value="${directory.value}">${directory.value}</option>
                     </#list>
@@ -78,7 +77,7 @@
                 <div class="dropdown-menu p-4" style="min-width: 300px">
                     <div class="directoryForm form-group">
                         <label for="attributeValue">Введите новое значение</label>
-                        <input type="text" class="form-control" nameAttr="name" id="attributeValue">
+                        <input type="text" class="form-control" name="name" id="attributeValue">
                     </div>
 
                     <a class="addDirectoryAttribute btn btn-primary">Добавить</a>
@@ -124,7 +123,7 @@
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Количество:</label>
             <div class="col-sm-6">
-                <input type="number" name="count" class="form-control" value="#{product.count}" placeholder="Количество" required
+                <input type="number" name="count" class="form-control" placeholder="Количество" required
                        max="9223372036854775807" min="0"/>
             </div>
         </div>
@@ -132,7 +131,7 @@
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Цена:</label>
             <div class="col-sm-6">
-                <input type="number" name="price" class="form-control" value="#{product.price}" placeholder="Цена" required max="2147483647"
+                <input type="number" name="price" class="form-control" placeholder="Цена" required max="2147483647"
                        min="0"/>
             </div>
         </div>
@@ -141,7 +140,7 @@
             <label class="col-sm-2 col-form-label">Цвет:</label>
 
             <div class="col-sm-6">
-                <select name="color" class="form-control" id="colorSelect" required>
+                <select name="color" class="form-control" value="${product.color}" required>
                     <#list directoryRepo.findAllByName("color") as directory>
                         <option value="${directory.value}">${directory.value}</option>
                     </#list>
@@ -162,7 +161,7 @@
                 <div class="dropdown-menu p-4" style="min-width: 300px">
                     <div class="directoryForm form-group">
                         <label for="attributeValue">Введите новое значение</label>
-                        <input type="text" class="form-control" nameAttr="color" id="attributeValue">
+                        <input type="text" class="form-control" name="color" id="attributeValue">
                     </div>
 
                     <a class="addDirectoryAttribute btn btn-primary">Добавить</a>
@@ -209,7 +208,7 @@
             <label class="col-sm-2 col-form-label">Производитель:</label>
 
             <div class="col-sm-6">
-                <select name="brand" class="form-control" id="brandSelect" required>
+                <select name="brand" class="form-control" required>
                     <#list directoryRepo.findAllByName("brand") as directory>
                         <option value="${directory.value}">${directory.value}</option>
                     </#list>
@@ -230,7 +229,7 @@
                 <div class="dropdown-menu p-4" style="min-width: 300px">
                     <div class="directoryForm form-group">
                         <label for="attributeValue">Введите новое значение</label>
-                        <input type="text" class="form-control" nameAttr="brand" id="attributeValue">
+                        <input type="text" class="form-control" name="brand" id="attributeValue">
                     </div>
 
                     <a class="addDirectoryAttribute btn btn-primary">Добавить</a>
@@ -277,7 +276,7 @@
             <label class="col-sm-2 col-form-label">Страна:</label>
 
             <div class="col-sm-6">
-                <select name="country" class="form-control" id="countrySelect" required>
+                <select name="country" class="form-control" required>
                     <#list directoryRepo.findAllByName("country") as directory>
                         <option value="${directory.value}">${directory.value}</option>
                     </#list>
@@ -298,7 +297,7 @@
                 <div class="dropdown-menu p-4" style="min-width: 300px">
                     <div class="directoryForm form-group">
                         <label for="attributeValue">Введите новое значение</label>
-                        <input type="text" class="form-control" nameAttr="country" id="attributeValue">
+                        <input type="text" class="form-control" name="country" id="attributeValue">
                     </div>
 
                     <a class="addDirectoryAttribute btn btn-primary">Добавить</a>
@@ -346,7 +345,7 @@
                 <label class="col-sm-2 col-form-label">Разрешение экрана:</label>
 
                 <div class="col-sm-6">
-                    <select name="screenResolution" id="screenResolutionSelect" class="form-control" required>
+                    <select name="screenResolution" class="form-control" required>
                         <#list directoryRepo.findAllByName("screenResolution") as directory>
                             <option value="${directory.value}">${directory.value}</option>
                         </#list>
@@ -367,7 +366,7 @@
                     <div class="dropdown-menu p-4" style="min-width: 300px">
                         <div class="directoryForm form-group">
                             <label for="attributeValue">Введите новое значение</label>
-                            <input type="text" class="form-control" nameAttr="screenResolution" id="attributeValue">
+                            <input type="text" class="form-control" name="screenResolution" id="attributeValue">
                         </div>
 
                         <a class="addDirectoryAttribute btn btn-primary">Добавить</a>
@@ -414,7 +413,7 @@
                 <label class="col-sm-2 col-form-label">Диагональ экрана:</label>
 
                 <div class="col-sm-6">
-                    <select name="screenDiagonal" id="screenDiagonalSelect" class="form-control" required>
+                    <select name="screenDiagonal" class="form-control" required>
                         <#list directoryRepo.findAllByName("screenDiagonal") as directory>
                             <option value="${directory.value}">${directory.value}</option>
                         </#list>
@@ -435,7 +434,7 @@
                     <div class="dropdown-menu p-4" style="min-width: 300px">
                         <div class="directoryForm form-group">
                             <label for="attributeValue">Введите новое значение</label>
-                            <input type="text" class="form-control" nameAttr="screenDiagonal" id="attributeValue">
+                            <input type="text" class="form-control" name="screenDiagonal" id="attributeValue">
                         </div>
 
                         <a class="addDirectoryAttribute btn btn-primary">Добавить</a>
@@ -482,7 +481,7 @@
                 <label class="col-sm-2 col-form-label">Платформа:</label>
 
                 <div class="col-sm-6">
-                    <select name="platform" id="platformSelect" class="form-control" required>
+                    <select name="platform" class="form-control" required>
                         <#list directoryRepo.findAllByName("platform") as directory>
                             <option value="${directory.value}">${directory.value}</option>
                         </#list>
@@ -503,7 +502,7 @@
                     <div class="dropdown-menu p-4" style="min-width: 300px">
                         <div class="directoryForm form-group">
                             <label for="attributeValue">Введите новое значение</label>
-                            <input type="text" class="form-control" nameAttr="platform" id="attributeValue">
+                            <input type="text" class="form-control" name="platform" id="attributeValue">
                         </div>
 
                         <a class="addDirectoryAttribute btn btn-primary">Добавить</a>
@@ -550,7 +549,7 @@
                 <label class="col-sm-2 col-form-label">Главная камера:</label>
 
                 <div class="col-sm-6">
-                    <select name="mainCamera" id="mainCameraSelect" class="form-control" required>
+                    <select name="mainCamera" class="form-control" required>
                         <#list directoryRepo.findAllByName("mainCamera") as directory>
                             <option value="${directory.value}">${directory.value}</option>
                         </#list>
@@ -571,7 +570,7 @@
                     <div class="dropdown-menu p-4" style="min-width: 300px">
                         <div class="directoryForm form-group">
                             <label for="attributeValue">Введите новое значение</label>
-                            <input type="text" class="form-control" nameAttr="mainCamera" id="attributeValue">
+                            <input type="text" class="form-control" name="mainCamera" id="attributeValue">
                         </div>
 
                         <a class="addDirectoryAttribute btn btn-primary">Добавить</a>
@@ -618,7 +617,7 @@
                 <label class="col-sm-2 col-form-label">Фронтальная камера:</label>
 
                 <div class="col-sm-6">
-                    <select name="frontCamera" id="frontCameraSelect" class="form-control" required>
+                    <select name="frontCamera" class="form-control" required>
                         <#list directoryRepo.findAllByName("frontCamera") as directory>
                             <option value="${directory.value}">${directory.value}</option>
                         </#list>
@@ -639,7 +638,7 @@
                     <div class="dropdown-menu p-4" style="min-width: 300px">
                         <div class="directoryForm form-group">
                             <label for="attributeValue">Введите новое значение</label>
-                            <input type="text" class="form-control" nameAttr="frontCamera" id="attributeValue">
+                            <input type="text" class="form-control" name="frontCamera" id="attributeValue">
                         </div>
 
                         <a class="addDirectoryAttribute btn btn-primary">Добавить</a>
@@ -686,7 +685,7 @@
                 <label class="col-sm-2 col-form-label">Встроенная память:</label>
 
                 <div class="col-sm-6">
-                    <select name="internalMemory" id="internalMemorySelect" class="form-control" required>
+                    <select name="internalMemory" class="form-control" required>
                         <#list directoryRepo.findAllByName("internalMemory") as directory>
                             <option value="${directory.value}">${directory.value}</option>
                         </#list>
@@ -707,7 +706,7 @@
                     <div class="dropdown-menu p-4" style="min-width: 300px">
                         <div class="directoryForm form-group">
                             <label for="attributeValue">Введите новое значение</label>
-                            <input type="text" class="form-control" nameAttr="internalMemory" id="attributeValue">
+                            <input type="text" class="form-control" name="internalMemory" id="attributeValue">
                         </div>
 
                         <a class="addDirectoryAttribute btn btn-primary">Добавить</a>
@@ -756,7 +755,7 @@
                 <label class="col-sm-2 col-form-label">Разрешение экрана:</label>
 
                 <div class="col-sm-6">
-                    <select name="screenResolution" id="screenResolutionSelect" class="form-control" required>
+                    <select name="screenResolution" class="form-control" required>
                         <#list directoryRepo.findAllByName("screenResolution") as directory>
                             <option value="${directory.value}">${directory.value}</option>
                         </#list>
@@ -777,7 +776,7 @@
                     <div class="dropdown-menu p-4" style="min-width: 300px">
                         <div class="directoryForm form-group">
                             <label for="attributeValue">Введите новое значение</label>
-                            <input type="text" class="form-control" nameAttr="screenResolution" id="attributeValue">
+                            <input type="text" class="form-control" name="screenResolution" id="attributeValue">
                         </div>
 
                         <a class="addDirectoryAttribute btn btn-primary">Добавить</a>
@@ -824,7 +823,7 @@
                 <label class="col-sm-2 col-form-label">Диагональ экрана:</label>
 
                 <div class="col-sm-6">
-                    <select name="screenDiagonal" id="screenDiagonalSelect" class="form-control" required>
+                    <select name="screenDiagonal" class="form-control" required>
                         <#list directoryRepo.findAllByName("screenDiagonal") as directory>
                             <option value="${directory.value}">${directory.value}</option>
                         </#list>
@@ -845,7 +844,7 @@
                     <div class="dropdown-menu p-4" style="min-width: 300px">
                         <div class="directoryForm form-group">
                             <label for="attributeValue">Введите новое значение</label>
-                            <input type="text" class="form-control" nameAttr="screenDiagonal" id="attributeValue">
+                            <input type="text" class="form-control" name="screenDiagonal" id="attributeValue">
                         </div>
 
                         <a class="addDirectoryAttribute btn btn-primary">Добавить</a>
@@ -892,7 +891,7 @@
                 <label class="col-sm-2 col-form-label">Встроенная память:</label>
 
                 <div class="col-sm-6">
-                    <select name="internalMemory" id="internalMemorySelect" class="form-control" required>
+                    <select name="internalMemory" class="form-control" required>
                         <#list directoryRepo.findAllByName("internalMemory") as directory>
                             <option value="${directory.value}">${directory.value}</option>
                         </#list>
@@ -913,7 +912,7 @@
                     <div class="dropdown-menu p-4" style="min-width: 300px">
                         <div class="directoryForm form-group">
                             <label for="attributeValue">Введите новое значение</label>
-                            <input type="text" class="form-control" nameAttr="internalMemory" id="attributeValue">
+                            <input type="text" class="form-control" name="internalMemory" id="attributeValue">
                         </div>
 
                         <a class="addDirectoryAttribute btn btn-primary">Добавить</a>
@@ -960,7 +959,7 @@
                 <label class="col-sm-2 col-form-label">Оперативная память:</label>
 
                 <div class="col-sm-6">
-                    <select name="ram" class="form-control" id="ramSelect" required>
+                    <select name="ram" class="form-control" required>
                         <#list directoryRepo.findAllByName("ram") as directory>
                             <option value="${directory.value}">${directory.value}</option>
                         </#list>
@@ -981,7 +980,7 @@
                     <div class="dropdown-menu p-4" style="min-width: 300px">
                         <div class="directoryForm form-group">
                             <label for="attributeValue">Введите новое значение</label>
-                            <input type="text" class="form-control" nameAttr="ram" id="attributeValue">
+                            <input type="text" class="form-control" name="ram" id="attributeValue">
                         </div>
 
                         <a class="addDirectoryAttribute btn btn-primary">Добавить</a>
@@ -1028,7 +1027,7 @@
                 <label class="col-sm-2 col-form-label">Процессор:</label>
 
                 <div class="col-sm-6">
-                    <select name="cpu" id="cpuSelect" class="form-control" required>
+                    <select name="cpu" class="form-control" required>
                         <#list directoryRepo.findAllByName("cpu") as directory>
                             <option value="${directory.value}">${directory.value}</option>
                         </#list>
@@ -1049,7 +1048,7 @@
                     <div class="dropdown-menu p-4" style="min-width: 300px">
                         <div class="directoryForm form-group">
                             <label for="attributeValue">Введите новое значение</label>
-                            <input type="text" class="form-control" nameAttr="cpu" id="attributeValue">
+                            <input type="text" class="form-control" name="cpu" id="attributeValue">
                         </div>
 
                         <a class="addDirectoryAttribute btn btn-primary" value="cpu">Добавить</a>
@@ -1096,7 +1095,7 @@
                 <label class="col-sm-2 col-form-label">Частота процессора:</label>
 
                 <div class="col-sm-6">
-                    <select name="cpuFrequency" id="cpuFrequencySelect" class="form-control" required>
+                    <select name="cpuFrequency" class="form-control" required>
                         <#list directoryRepo.findAllByName("cpuFrequency") as directory>
                             <option value="${directory.value}">${directory.value}</option>
                         </#list>
@@ -1117,7 +1116,7 @@
                     <div class="dropdown-menu p-4" style="min-width: 300px">
                         <div class="directoryForm form-group">
                             <label for="attributeValue">Введите новое значение</label>
-                            <input type="text" class="form-control" nameAttr="cpuFrequency" id="attributeValue">
+                            <input type="text" class="form-control" name="cpuFrequency" id="attributeValue">
                         </div>
 
                         <a class="addDirectoryAttribute btn btn-primary" value="cpuFrequency">Добавить</a>
@@ -1164,7 +1163,7 @@
                 <label class="col-sm-2 col-form-label">Количество ядер:</label>
 
                 <div class="col-sm-6">
-                    <select name="countOfCores" id="countOfCoresSelect" class="form-control" required>
+                    <select name="countOfCores" class="form-control" required>
                         <#list directoryRepo.findAllByName("countOfCores") as directory>
                             <option value="${directory.value}">${directory.value}</option>
                         </#list>
@@ -1185,7 +1184,7 @@
                     <div class="dropdown-menu p-4" style="min-width: 300px">
                         <div class="directoryForm form-group">
                             <label for="attributeValue">Введите новое значение</label>
-                            <input type="text" class="form-control" nameAttr="countOfCores" id="attributeValue">
+                            <input type="text" class="form-control" name="countOfCores" id="attributeValue">
                         </div>
 
                         <a class="addDirectoryAttribute btn btn-primary" value="countOfCores">Добавить</a>
@@ -1232,7 +1231,7 @@
                 <label class="col-sm-2 col-form-label">Графический процессор:</label>
 
                 <div class="col-sm-6">
-                    <select name="graphicsProcessor" id="graphicsProcessorSelect" class="form-control" required>
+                    <select name="graphicsProcessor" class="form-control" required>
                         <#list directoryRepo.findAllByName("graphicsProcessor") as directory>
                             <option value="${directory.value}">${directory.value}</option>
                         </#list>
@@ -1253,7 +1252,7 @@
                     <div class="dropdown-menu p-4" style="min-width: 300px">
                         <div class="directoryForm form-group">
                             <label for="attributeValue">Введите новое значение</label>
-                            <input type="text" class="form-control" nameAttr="graphicsProcessor" id="attributeValue">
+                            <input type="text" class="form-control" name="graphicsProcessor" id="attributeValue">
                         </div>
 
                         <a class="addDirectoryAttribute btn btn-primary" value="graphicsProcessor">Добавить</a>
@@ -1300,7 +1299,7 @@
                 <label class="col-sm-2 col-form-label">Год выпуска:</label>
 
                 <div class="col-sm-6">
-                    <select name="yearRelease" id="yearReleaseSelect" class="form-control" required>
+                    <select name="yearRelease" class="form-control" required>
                         <#list directoryRepo.findAllByName("yearRelease") as directory>
                             <option value="${directory.value}">${directory.value}</option>
                         </#list>
@@ -1321,7 +1320,7 @@
                     <div class="dropdown-menu p-4" style="min-width: 300px">
                         <div class="directoryForm form-group">
                             <label for="attributeValue">Введите новое значение</label>
-                            <input type="text" class="form-control" nameAttr="yearRelease" id="attributeValue">
+                            <input type="text" class="form-control" name="yearRelease" id="attributeValue">
                         </div>
 
                         <a class="addDirectoryAttribute btn btn-primary" value="yearRelease">Добавить</a>
@@ -1372,7 +1371,7 @@
                 <label class="col-sm-2 col-form-label">Разрешение экрана:</label>
 
                 <div class="col-sm-6">
-                    <select name="screenResolution" id="screenResolutionSelect" class="form-control" required>
+                    <select name="screenResolution" class="form-control" required>
                         <#list directoryRepo.findAllByName("screenResolution") as directory>
                             <option value="${directory.value}">${directory.value}</option>
                         </#list>
@@ -1393,7 +1392,7 @@
                     <div class="dropdown-menu p-4" style="min-width: 300px">
                         <div class="directoryForm form-group">
                             <label for="attributeValue">Введите новое значение</label>
-                            <input type="text" class="form-control" nameAttr="screenResolution" id="attributeValue">
+                            <input type="text" class="form-control" name="screenResolution" id="attributeValue">
                         </div>
 
                         <a class="addDirectoryAttribute btn btn-primary" value="screenResolution">Добавить</a>
@@ -1440,7 +1439,7 @@
                 <label class="col-sm-2 col-form-label">Диагональ экрана:</label>
 
                 <div class="col-sm-6">
-                    <select name="screenDiagonal" id="screenDiagonalSelect" class="form-control" required>
+                    <select name="screenDiagonal" class="form-control" required>
                         <#list directoryRepo.findAllByName("screenDiagonal") as directory>
                             <option value="${directory.value}">${directory.value}</option>
                         </#list>
@@ -1461,7 +1460,7 @@
                     <div class="dropdown-menu p-4" style="min-width: 300px">
                         <div class="directoryForm form-group">
                             <label for="attributeValue">Введите новое значение</label>
-                            <input type="text" class="form-control" nameAttr="screenDiagonal" id="attributeValue">
+                            <input type="text" class="form-control" name="screenDiagonal" id="attributeValue">
                         </div>
 
                         <a class="addDirectoryAttribute btn btn-primary" value="screenDiagonal">Добавить</a>
@@ -1508,7 +1507,7 @@
                 <label class="col-sm-2 col-form-label">Встроенная память:</label>
 
                 <div class="col-sm-6">
-                    <select name="internalMemory" id="internalMemorySelect" class="form-control" required>
+                    <select name="internalMemory" class="form-control" required>
                         <#list directoryRepo.findAllByName("internalMemory") as directory>
                             <option value="${directory.value}">${directory.value}</option>
                         </#list>
@@ -1529,7 +1528,7 @@
                     <div class="dropdown-menu p-4" style="min-width: 300px">
                         <div class="directoryForm form-group">
                             <label for="attributeValue">Введите новое значение</label>
-                            <input type="text" class="form-control" nameAttr="internalMemory" id="attributeValue">
+                            <input type="text" class="form-control" name="internalMemory" id="attributeValue">
                         </div>
 
                         <a class="addDirectoryAttribute btn btn-primary" value="internalMemory">Добавить</a>
@@ -1576,7 +1575,7 @@
                 <label class="col-sm-2 col-form-label">Оперативная память:</label>
 
                 <div class="col-sm-6">
-                    <select name="ram" id="ramSelect" class="form-control" required>
+                    <select name="ram" class="form-control" required>
                         <#list directoryRepo.findAllByName("ram") as directory>
                             <option value="${directory.value}">${directory.value}</option>
                         </#list>
@@ -1597,7 +1596,7 @@
                     <div class="dropdown-menu p-4" style="min-width: 300px">
                         <div class="directoryForm form-group">
                             <label for="attributeValue">Введите новое значение</label>
-                            <input type="text" class="form-control" nameAttr="ram" id="attributeValue">
+                            <input type="text" class="form-control" name="ram" id="attributeValue">
                         </div>
 
                         <a class="addDirectoryAttribute btn btn-primary" value="ram">Добавить</a>
@@ -1644,7 +1643,7 @@
                 <label class="col-sm-2 col-form-label">Процессор:</label>
 
                 <div class="col-sm-6">
-                    <select name="cpu" id="cpuSelect" class="form-control" required>
+                    <select name="cpu" class="form-control" required>
                         <#list directoryRepo.findAllByName("cpu") as directory>
                             <option value="${directory.value}">${directory.value}</option>
                         </#list>
@@ -1665,7 +1664,7 @@
                     <div class="dropdown-menu p-4" style="min-width: 300px">
                         <div class="directoryForm form-group">
                             <label for="attributeValue">Введите новое значение</label>
-                            <input type="text" class="form-control" nameAttr="cpu" id="attributeValue">
+                            <input type="text" class="form-control" name="cpu" id="attributeValue">
                         </div>
 
                         <a class="addDirectoryAttribute btn btn-primary" value="cpu">Добавить</a>
@@ -1712,7 +1711,7 @@
                 <label class="col-sm-2 col-form-label">Частота процессора:</label>
 
                 <div class="col-sm-6">
-                    <select name="cpuFrequency" id="cpuFrequencySelect" class="form-control" required>
+                    <select name="cpuFrequency" class="form-control" required>
                         <#list directoryRepo.findAllByName("cpuFrequency") as directory>
                             <option value="${directory.value}">${directory.value}</option>
                         </#list>
@@ -1733,7 +1732,7 @@
                     <div class="dropdown-menu p-4" style="min-width: 300px">
                         <div class="directoryForm form-group">
                             <label for="attributeValue">Введите новое значение</label>
-                            <input type="text" class="form-control" nameAttr="cpuFrequency" id="attributeValue">
+                            <input type="text" class="form-control" name="cpuFrequency" id="attributeValue">
                         </div>
 
                         <a class="addDirectoryAttribute btn btn-primary" value="cpuFrequency">Добавить</a>
@@ -1780,7 +1779,7 @@
                 <label class="col-sm-2 col-form-label">Количество ядер:</label>
 
                 <div class="col-sm-6">
-                    <select name="countOfCores" id="countOfCoresSelect" class="form-control" required>
+                    <select name="countOfCores" class="form-control" required>
                         <#list directoryRepo.findAllByName("countOfCores") as directory>
                             <option value="${directory.value}">${directory.value}</option>
                         </#list>
@@ -1801,7 +1800,7 @@
                     <div class="dropdown-menu p-4" style="min-width: 300px">
                         <div class="directoryForm form-group">
                             <label for="attributeValue">Введите новое значение</label>
-                            <input type="text" class="form-control" nameAttr="countOfCores" id="attributeValue">
+                            <input type="text" class="form-control" name="countOfCores" id="attributeValue">
                         </div>
 
                         <a class="addDirectoryAttribute btn btn-primary" value="countOfCores">Добавить</a>
@@ -1848,7 +1847,7 @@
                 <label class="col-sm-2 col-form-label">Графический процессор:</label>
 
                 <div class="col-sm-6">
-                    <select name="graphicsProcessor" id="graphicsProcessorSelect" class="form-control" required>
+                    <select name="graphicsProcessor" class="form-control" required>
                         <#list directoryRepo.findAllByName("graphicsProcessor") as directory>
                             <option value="${directory.value}">${directory.value}</option>
                         </#list>
@@ -1869,7 +1868,7 @@
                     <div class="dropdown-menu p-4" style="min-width: 300px">
                         <div class="directoryForm form-group">
                             <label for="attributeValue">Введите новое значение</label>
-                            <input type="text" class="form-control" nameAttr="graphicsProcessor" id="attributeValue">
+                            <input type="text" class="form-control" name="graphicsProcessor" id="attributeValue">
                         </div>
 
                         <a class="addDirectoryAttribute btn btn-primary" value="graphicsProcessor">Добавить</a>
@@ -1916,7 +1915,7 @@
                 <label class="col-sm-2 col-form-label">Год выпуска:</label>
 
                 <div class="col-sm-6">
-                    <select name="yearRelease" id="yearReleaseSelect" class="form-control" required>
+                    <select name="yearRelease" class="form-control" required>
                         <#list directoryRepo.findAllByName("yearRelease") as directory>
                             <option value="${directory.value}">${directory.value}</option>
                         </#list>
@@ -1937,7 +1936,7 @@
                     <div class="dropdown-menu p-4" style="min-width: 300px">
                         <div class="directoryForm form-group">
                             <label for="attributeValue">Введите новое значение</label>
-                            <input type="text" class="form-control" nameAttr="yearRelease" id="attributeValue">
+                            <input type="text" class="form-control" name="yearRelease" id="attributeValue">
                         </div>
 
                         <a class="addDirectoryAttribute btn btn-primary" value="yearRelease">Добавить</a>
@@ -1987,7 +1986,7 @@
                 <label class="col-sm-2 col-form-label">Разрешение экрана:</label>
 
                 <div class="col-sm-6">
-                    <select name="screenResolution" id="screenResolutionSelect" class="form-control" required>
+                    <select name="screenResolution" class="form-control" required>
                         <#list directoryRepo.findAllByName("screenResolution") as directory>
                             <option value="${directory.value}">${directory.value}</option>
                         </#list>
@@ -2008,7 +2007,7 @@
                     <div class="dropdown-menu p-4" style="min-width: 300px">
                         <div class="directoryForm form-group">
                             <label for="attributeValue">Введите новое значение</label>
-                            <input type="text" class="form-control" nameAttr="screenResolution" id="attributeValue">
+                            <input type="text" class="form-control" name="screenResolution" id="attributeValue">
                         </div>
 
                         <a class="addDirectoryAttribute btn btn-primary" value="screenResolution">Добавить</a>
@@ -2055,7 +2054,7 @@
                 <label class="col-sm-2 col-form-label">Диагональ экрана:</label>
 
                 <div class="col-sm-6">
-                    <select name="screenDiagonal" id="screenDiagonalSelect" class="form-control" required>
+                    <select name="screenDiagonal" class="form-control" required>
                         <#list directoryRepo.findAllByName("screenDiagonal") as directory>
                             <option value="${directory.value}">${directory.value}</option>
                         </#list>
@@ -2076,7 +2075,7 @@
                     <div class="dropdown-menu p-4" style="min-width: 300px">
                         <div class="directoryForm form-group">
                             <label for="attributeValue">Введите новое значение</label>
-                            <input type="text" class="form-control" nameAttr="screenDiagonal" id="attributeValue">
+                            <input type="text" class="form-control" name="screenDiagonal" id="attributeValue">
                         </div>
 
                         <a class="addDirectoryAttribute btn btn-primary" value="screenDiagonal">Добавить</a>
@@ -2123,7 +2122,7 @@
                 <label class="col-sm-2 col-form-label">Год выпуска:</label>
 
                 <div class="col-sm-6">
-                    <select name="yearRelease" id="yearReleaseSelect" class="form-control" required>
+                    <select name="yearRelease" class="form-control" required>
                         <#list directoryRepo.findAllByName("yearRelease") as directory>
                             <option value="${directory.value}">${directory.value}</option>
                         </#list>
@@ -2144,7 +2143,7 @@
                     <div class="dropdown-menu p-4" style="min-width: 300px">
                         <div class="directoryForm form-group">
                             <label for="attributeValue">Введите новое значение</label>
-                            <input type="text" class="form-control" nameAttr="yearRelease" id="attributeValue">
+                            <input type="text" class="form-control" name="yearRelease" id="attributeValue">
                         </div>
 
                         <a class="addDirectoryAttribute btn btn-primary" value="yearRelease">Добавить</a>
@@ -2191,7 +2190,7 @@
                 <label class="col-sm-2 col-form-label">Операционная система:</label>
 
                 <div class="col-sm-6">
-                    <select name="platform" id="platformSelect" class="form-control" required>
+                    <select name="platform" class="form-control" required>
                         <#list directoryRepo.findAllByName("platform") as directory>
                             <option value="${directory.value}">${directory.value}</option>
                         </#list>
@@ -2212,7 +2211,7 @@
                     <div class="dropdown-menu p-4" style="min-width: 300px">
                         <div class="directoryForm form-group">
                             <label for="attributeValue">Введите новое значение</label>
-                            <input type="text" class="form-control" nameAttr="platform" id="attributeValue">
+                            <input type="text" class="form-control" name="platform" id="attributeValue">
                         </div>
 
                         <a class="addDirectoryAttribute btn btn-primary" value="platform">Добавить</a>
@@ -2259,7 +2258,7 @@
                 <label class="col-sm-2 col-form-label">smart TV:</label>
 
                 <div class="col-sm-6">
-                    <select name="smartTV" id="smartTVSelect" class="form-control" required>
+                    <select name="smartTV" class="form-control" required>
                         <#list directoryRepo.findAllByName("smartTV") as directory>
                             <option value="${directory.value}">${directory.value}</option>
                         </#list>
@@ -2280,7 +2279,7 @@
                     <div class="dropdown-menu p-4" style="min-width: 300px">
                         <div class="directoryForm form-group">
                             <label for="attributeValue">Введите новое значение</label>
-                            <input type="text" class="form-control" nameAttr="smartTV" id="attributeValue">
+                            <input type="text" class="form-control" name="smartTV" id="attributeValue">
                         </div>
 
                         <a class="addDirectoryAttribute btn btn-primary" value="smartTV">Добавить</a>
@@ -2327,7 +2326,7 @@
                 <label class="col-sm-2 col-form-label">Sleep-таймер:</label>
 
                 <div class="col-sm-6">
-                    <select name="sleepTimer" id="sleepTimerSelect" class="form-control" required>
+                    <select name="sleepTimer" class="form-control" required>
                         <#list directoryRepo.findAllByName("sleepTimer") as directory>
                             <option value="${directory.value}">${directory.value}</option>
                         </#list>
@@ -2348,7 +2347,7 @@
                     <div class="dropdown-menu p-4" style="min-width: 300px">
                         <div class="directoryForm form-group">
                             <label for="attributeValue">Введите новое значение</label>
-                            <input type="text" class="form-control" nameAttr="sleepTimer" id="attributeValue">
+                            <input type="text" class="form-control" name="sleepTimer" id="attributeValue">
                         </div>
 
                         <a class="addDirectoryAttribute btn btn-primary" value="sleepTimer">Добавить</a>
@@ -2395,7 +2394,7 @@
                 <label class="col-sm-2 col-form-label">Звук:</label>
 
                 <div class="col-sm-6">
-                    <select name="sound" id="soundSelect" class="form-control" required>
+                    <select name="sound" class="form-control" required>
                         <#list directoryRepo.findAllByName("sound") as directory>
                             <option value="${directory.value}">${directory.value}</option>
                         </#list>
@@ -2416,7 +2415,7 @@
                     <div class="dropdown-menu p-4" style="min-width: 300px">
                         <div class="directoryForm form-group">
                             <label for="attributeValue">Введите новое значение</label>
-                            <input type="text" class="form-control" nameAttr="sound" id="attributeValue">
+                            <input type="text" class="form-control" name="sound" id="attributeValue">
                         </div>
 
                         <a class="addDirectoryAttribute btn btn-primary" value="sound">Добавить</a>
@@ -2463,7 +2462,7 @@
                 <label class="col-sm-2 col-form-label">Тип дистанционного управления:</label>
 
                 <div class="col-sm-6">
-                    <select name="typeOfRemoteControl" id="typeOfRemoteControlSelect" class="form-control" required>
+                    <select name="typeOfRemoteControl" class="form-control" required>
                         <#list directoryRepo.findAllByName("typeOfRemoteControl") as directory>
                             <option value="${directory.value}">${directory.value}</option>
                         </#list>
@@ -2484,7 +2483,7 @@
                     <div class="dropdown-menu p-4" style="min-width: 300px">
                         <div class="directoryForm form-group">
                             <label for="attributeValue">Введите новое значение</label>
-                            <input type="text" class="form-control" nameAttr="typeOfRemoteControl" id="attributeValue">
+                            <input type="text" class="form-control" name="typeOfRemoteControl" id="attributeValue">
                         </div>
 
                         <a class="addDirectoryAttribute btn btn-primary" value="typeOfRemoteControl">Добавить</a>
@@ -2531,7 +2530,7 @@
                 <label class="col-sm-2 col-form-label">Размер:</label>
 
                 <div class="col-sm-6">
-                    <input type="text" name="size" class="form-control" placeholder="Размер" value="${productService.findByNameAndProduct("size", product)}" required maxlength="100"/>
+                    <input type="text" name="size" class="form-control" placeholder="Размер" required maxlength="100"/>
                 </div>
             </div>
 
@@ -2539,7 +2538,7 @@
                 <label class="col-sm-2 col-form-label">Вес:</label>
 
                 <div class="col-sm-6">
-                    <input type="text" name="weight" class="form-control" placeholder="Вес" value="${productService.findByNameAndProduct("weight", product)}" required maxlength="100"/>
+                    <input type="text" name="weight" class="form-control" placeholder="Вес" required maxlength="100"/>
                 </div>
             </div>
 
@@ -2547,7 +2546,7 @@
                 <label class="col-sm-2 col-form-label">HDMI порты:</label>
 
                 <div class="col-sm-6">
-                    <select name="countOfHdmiPorts" id="countOfHdmiPortsSelect" class="form-control" required>
+                    <select name="countOfHdmiPorts" class="form-control" required>
                         <#list directoryRepo.findAllByName("countOfHdmiPorts") as directory>
                             <option value="${directory.value}">${directory.value}</option>
                         </#list>
@@ -2568,7 +2567,7 @@
                     <div class="dropdown-menu p-4" style="min-width: 300px">
                         <div class="directoryForm form-group">
                             <label for="attributeValue">Введите новое значение</label>
-                            <input type="text" class="form-control" nameAttr="countOfHdmiPorts" id="attributeValue">
+                            <input type="text" class="form-control" name="countOfHdmiPorts" id="attributeValue">
                         </div>
 
                         <a class="addDirectoryAttribute btn btn-primary" value="countOfHdmiPorts">Добавить</a>
@@ -2716,103 +2715,11 @@
 
     <script>
         window.onload = function setSelect() {
-            var name = '${product.name}';
-            document.getElementById("nameSelect").value=name;
+            var memory = '${productService.findByNameAndProduct("internalMemory", product).value}';
+            document.getElementById("memorySelect").value=memory;
 
             var color = '${product.color}';
             document.getElementById("colorSelect").value=color;
-
-            var brand = '${product.brand}';
-            document.getElementById("brandSelect").value=brand;
-
-            var country = '${product.country}';
-            document.getElementById("countrySelect").value=country;
-
-
-            <#if "${product.type.name()}" == "TELEPHONE">
-            if ("${product.type.name()}" === "TELEPHONE"){
-                var screenResolution = '${productService.findByNameAndProduct("screenResolution", product).value}';
-                document.getElementById("screenResolutionSelect").value=screenResolution;
-
-                var screenDiagonal = '${productService.findByNameAndProduct("screenDiagonal", product).value}';
-                document.getElementById("screenDiagonalSelect").value=screenDiagonal;
-
-                var platform = '${productService.findByNameAndProduct("platform", product).value}';
-                document.getElementById("platformSelect").value=platform;
-
-                var mainCamera = '${productService.findByNameAndProduct("mainCamera", product).value}';
-                document.getElementById("mainCameraSelect").value=mainCamera;
-
-                var frontCamera = '${productService.findByNameAndProduct("frontCamera", product).value}';
-                document.getElementById("frontCameraSelect").value=frontCamera;
-
-                var memory = '${productService.findByNameAndProduct("internalMemory", product).value}';
-                document.getElementById("internalMemorySelect").value=memory;
-            }
-            </#if>
-
-
-            <#if "${product.type.name()}" == "COMPUTER" || "${product.type.name()}" == "NOTEBOOK">
-            if ("${product.type.name()}" == "COMPUTER" || "${product.type.name()}" == "NOTEBOOK"){
-                var screenResolution = '${productService.findByNameAndProduct("screenResolution", product).value}';
-                document.getElementById("screenResolutionSelect").value=screenResolution;
-
-                var screenDiagonal = '${productService.findByNameAndProduct("screenDiagonal", product).value}';
-                document.getElementById("screenDiagonalSelect").value=screenDiagonal;
-
-                var memory = '${productService.findByNameAndProduct("internalMemory", product).value}';
-                document.getElementById("internalMemorySelect").value=memory;
-
-                var ram = '${productService.findByNameAndProduct("ram", product).value}';
-                document.getElementById("ramSelect").value=ram;
-
-                var cpu = '${productService.findByNameAndProduct("cpu", product).value}';
-                document.getElementById("cpuSelect").value=cpu;
-
-                var cpuFrequency = '${productService.findByNameAndProduct("cpuFrequency", product).value}';
-                document.getElementById("cpuFrequencySelect").value=cpuFrequency;
-
-                var countOfCores = '${productService.findByNameAndProduct("countOfCores", product).value}';
-                document.getElementById("countOfCoresSelect").value=countOfCores;
-
-                var graphicsProcessor = '${productService.findByNameAndProduct("graphicsProcessor", product).value}';
-                document.getElementById("graphicsProcessorSelect").value=graphicsProcessor;
-
-                var yearRelease = '${productService.findByNameAndProduct("yearRelease", product).value}';
-                document.getElementById("yearReleaseSelect").value=yearRelease;
-            }
-            </#if>
-
-            <#if "${product.type.name()}" == "TV">
-            if ("${product.type.name()}" == "TV"){
-                var screenResolution = '${productService.findByNameAndProduct("screenResolution", product).value}';
-                document.getElementById("screenResolutionSelect").value=screenResolution;
-
-                var screenDiagonal = '${productService.findByNameAndProduct("screenDiagonal", product).value}';
-                document.getElementById("screenDiagonalSelect").value=screenDiagonal;
-
-                var yearRelease = '${productService.findByNameAndProduct("yearRelease", product).value}';
-                document.getElementById("yearReleaseSelect").value=yearRelease;
-
-                var platform = '${productService.findByNameAndProduct("platform", product).value}';
-                document.getElementById("platformSelect").value=platform;
-
-                var smartTV = '${productService.findByNameAndProduct("smartTV", product).value}';
-                document.getElementById("smartTVSelect").value=smartTV;
-
-                var sleepTimer = '${productService.findByNameAndProduct("sleepTimer", product).value}';
-                document.getElementById("sleepTimerSelect").value=sleepTimer;
-
-                var sound = '${productService.findByNameAndProduct("sound", product).value}';
-                document.getElementById("soundSelect").value=sound;
-
-                var typeOfRemoteControl = '${productService.findByNameAndProduct("typeOfRemoteControl", product).value}';
-                document.getElementById("typeOfRemoteControlSelect").value=typeOfRemoteControl;
-
-                var countOfHdmiPorts = '${productService.findByNameAndProduct("countOfHdmiPorts", product).value}';
-                document.getElementById("countOfHdmiPortsSelect").value=countOfHdmiPorts;
-            }
-            </#if>
         }
     </script>
 

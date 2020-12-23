@@ -3,6 +3,7 @@ package org.example.onlineStore.controller;
 import org.example.onlineStore.domain.*;
 import org.example.onlineStore.insideClasses.MyFile;
 import org.example.onlineStore.repos.AttributeRepo;
+import org.example.onlineStore.repos.DirectoryRepo;
 import org.example.onlineStore.service.BasketService;
 import org.example.onlineStore.service.ProductService;
 import org.example.onlineStore.service.UserService;
@@ -32,6 +33,9 @@ public class ProductController {
 
     @Autowired
     private AttributeRepo attributeRepo;
+
+    @Autowired
+    private DirectoryRepo directoryRepo;
 
     @Value("${upload.path}")
     private String uploadPath;
@@ -140,6 +144,7 @@ public class ProductController {
     public String product(Model model, @PathVariable String type){
         model.addAttribute("basketRepo", basketService);
         model.addAttribute("type", type);
+        model.addAttribute("directoryRepo", directoryRepo);
         return "productAdd";
     }
 
@@ -287,6 +292,7 @@ public class ProductController {
         model.addAttribute("basketRepo", basketService);
         model.addAttribute("product", product);
         model.addAttribute("productService", productService);
+        model.addAttribute("directoryRepo", directoryRepo);
 
         return "productEdit";
     }
@@ -307,6 +313,8 @@ public class ProductController {
         if (!newFilenames.isEmpty()){
             oldProduct.setFilesNames(newFilenames);
         }
+
+        System.out.println(newProduct.getName());
 
         productService.updateProduct(newAttributes, newProduct, oldProduct);
 
@@ -340,5 +348,34 @@ public class ProductController {
         productService.save(product);
 
         return "product activated";
+    }
+
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @PostMapping("/addAttributeToDirectory")
+    @ResponseBody
+    public String addDirectoryAttribute(@RequestParam Map<String, String> map){
+
+        Directory directory = new Directory(map.get("name"), map.get("value"));
+
+        if (directoryRepo.findByNameAndValue(directory.getName(), directory.getValue()) != null){
+            return "attribute already exist";
+        }
+
+        directoryRepo.save(directory);
+
+        return "attribute added";
+    }
+
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @PostMapping("/deleteDirectoryAttribute")
+    @ResponseBody
+    public String deleteDirectoryAttribute(@RequestParam("directoryId") Directory directory){
+
+        if (directory != null){
+            directoryRepo.delete(directory);
+        }
+
+
+        return "attributes added";
     }
 }

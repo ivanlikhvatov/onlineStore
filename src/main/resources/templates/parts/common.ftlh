@@ -309,6 +309,77 @@
             </script>
 
             <script>
+
+                $('.addDirectoryAttribute').click(function() {
+                    let data = new FormData();
+                    let csrfToken = $("#csrfUserList").attr("content");
+                    data.append("_csrf", csrfToken);
+
+                    var newValue;
+                    var name;
+
+
+                    var d = $(this).parent()
+
+                    console.log(d)
+
+                    d.each(function(index, item) {
+                        var $item = $(item);
+                         name = $item.find("input").attr("nameAttr");
+                         newValue = $item.find("input").val();
+                    });
+
+                    data.append("value", newValue);
+                    data.append("name", name);
+
+                    $.ajax({
+                        type: "POST",
+                        url: "/product/addAttributeToDirectory",
+                        processData: false,
+                        contentType: false,
+                        cache: false,
+                        timeout: 1000000,
+                        data: data,
+
+                        success: function() {
+                            location.reload();
+                        },
+
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            console.log("ERROR : ", jqXHR.responseText);
+                        }
+                    });
+                });
+            </script>
+
+            <script>
+                $('.deleteDirectoryAttribute').on('click', function () {
+                    let data = new FormData();
+                    let directoryId = $(this).attr("value");
+                    let csrfToken = $("#csrfUserList").attr("content");
+                    data.append("_csrf", csrfToken);
+                    data.append("directoryId", directoryId);
+                    $.ajax({
+                        type: "POST",
+                        url: "/product/deleteDirectoryAttribute",
+                        processData: false,
+                        contentType: false,
+                        cache: false,
+                        timeout: 1000000,
+                        data: data,
+
+                        success: function() {
+                            location.reload();
+                        },
+
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            console.log("ERROR : ", jqXHR.responseText);
+                        }
+                    });
+                });
+            </script>
+
+            <script>
                 function setWidthCheckoutButton() {
                     $("#checkoutButton").width($("#cartCard").width());
                 }
